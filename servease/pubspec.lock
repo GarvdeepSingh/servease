@@ -83,7 +83,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-<<<<<<< HEAD
   flutter_web_plugins:
     dependency: transitive
     description: flutter
@@ -105,7 +104,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.18.1"
-=======
   leak_tracker:
     dependency: transitive
     description:
@@ -130,7 +128,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
->>>>>>> 14ab0f894347083b0de29737c67b457ee32b982a
   lints:
     dependency: transitive
     description:
@@ -232,7 +229,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
-<<<<<<< HEAD
   velocity_x:
     dependency: "direct main"
     description:
@@ -241,6 +237,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.1.2"
+  vm_service:
+    dependency: transitive
+    description:
+      name: vm_service
+      sha256: b3d56ff4341b8f182b96aceb2fa20e3dcb336b9f867bc0eafc0de10f1048e957
+      url: "https://pub.dev"
+    source: hosted
+    version: "13.0.0"
   vxstate:
     dependency: transitive
     description:
@@ -249,21 +253,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.0"
-  web:
-=======
-  vm_service:
->>>>>>> 14ab0f894347083b0de29737c67b457ee32b982a
-    dependency: transitive
-    description:
-      name: vm_service
-      sha256: b3d56ff4341b8f182b96aceb2fa20e3dcb336b9f867bc0eafc0de10f1048e957
-      url: "https://pub.dev"
-    source: hosted
-    version: "13.0.0"
 sdks:
-<<<<<<< HEAD
-  dart: ">=3.1.5 <4.0.0"
-  flutter: ">=3.13.0"
-=======
   dart: ">=3.2.0-0 <4.0.0"
->>>>>>> 14ab0f894347083b0de29737c67b457ee32b982a
+  flutter: ">=3.13.0"

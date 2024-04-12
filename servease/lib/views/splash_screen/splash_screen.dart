@@ -4,6 +4,9 @@ import 'package:servease/consts/consts.dart';
 import 'dart:ffi';
 import 'package:servease/views/skip/skip_screen.dart';
 import 'package:get/get.dart';
+import 'package:servease/widgets_common/splash.dart';
+import 'package:velocity_x/velocity_x.dart';
+
 class splashscreen extends StatefulWidget {
   const splashscreen({super.key});
 
@@ -12,10 +15,8 @@ class splashscreen extends StatefulWidget {
 }
 
 class splashscreenState extends State<splashscreen> {
-
-
- changescreen(){
-    Future.delayed(const Duration(seconds: 3),(){
+  changescreen() {
+    Future.delayed(const Duration(seconds: 4), () {
       Get.to(() => skipscreen());
     });
   }
@@ -28,25 +29,23 @@ class splashscreenState extends State<splashscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: whiteColor,
         body: Center(
-          child: Column(
-            children: [
-                    Image.asset(
-                    'assets/images/charity box.png',
-                    width: 300,
-                  ),
-              // 20.heightBox,
-              // applogowidget(),
-              // 10.heightBox,
-              // appname.text.fontFamily(bold).size(22).white.make(),
-              // 5.heightBox,
-              // appversion.text.white.make(),
-              // const Spacer(),
-              // credits.text.white.fontFamily(semibold).make(),
-              // 30.heightBox,
-            ],
-          ),
-        ));
+            child: Column(children: [
+      325.heightBox,
+      Align(
+        alignment: Alignment.center,
+        child: splash(),
+      ),
+      10.heightBox,
+      const Text(
+        'SERVEASE',
+        style: TextStyle(
+          fontSize: 60,
+          color: color1,
+          fontWeight: FontWeight.normal,
+          fontFamily: jk,
+        ),
+      ),
+    ])));
   }
 }
