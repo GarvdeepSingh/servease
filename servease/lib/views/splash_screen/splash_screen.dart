@@ -4,6 +4,7 @@ import 'package:servease/consts/consts.dart';
 import 'dart:ffi';
 import 'package:servease/views/skip/skip_screen.dart';
 import 'package:get/get.dart';
+import 'package:servease/views/skip/skip_screen1.dart';
 import 'package:servease/widgets_common/splash.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -16,8 +17,8 @@ class splashscreen extends StatefulWidget {
 
 class splashscreenState extends State<splashscreen> {
   changescreen() {
-    Future.delayed(const Duration(seconds: 4), () {
-      Get.to(() => skipscreen());
+    Future.delayed(const Duration(seconds: 2), () {
+      Get.to(() => onboard());
     });
   }
 
