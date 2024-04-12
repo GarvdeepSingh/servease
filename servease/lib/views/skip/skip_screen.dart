@@ -18,6 +18,7 @@ continuemethod(){
 
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     //it will help us to return size of screen
+    // ignore: unused_local_variable
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(

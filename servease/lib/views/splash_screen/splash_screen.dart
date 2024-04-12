@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:servease/consts/colors.dart';
 import 'package:servease/consts/consts.dart';
+// ignore: unused_import
 import 'dart:ffi';
-import 'package:servease/views/skip/skip_screen.dart';
 import 'package:get/get.dart';
 import 'package:servease/views/skip/skip_screen1.dart';
 import 'package:servease/widgets_common/splash.dart';

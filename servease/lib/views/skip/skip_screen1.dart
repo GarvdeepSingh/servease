@@ -1,3 +1,4 @@
+// ignore: unused_import
 import 'package:get/get.dart';
 import 'package:servease/consts/consts.dart';
 import 'package:servease/views/skip/skip_screen.dart';
