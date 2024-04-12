@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:servease/consts/consts.dart';
 import 'package:servease/widgets_common/skipscreen/screen1.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class skipscreen extends StatelessWidget {
   
