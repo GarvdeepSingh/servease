@@ -88,6 +88,12 @@ flutter:
     - family: jockey
       fonts:
         - asset: assets/fonts/jockey
+    - family: Akshar
+      fonts:
+        - asset: assets/fonts/Akshar
+    - family: BAUH
+      fonts:
+        - asset: assets/fonts/BAUH
         
         # - asset: fonts/Schyler-Italic.ttf
         #   style: italic
