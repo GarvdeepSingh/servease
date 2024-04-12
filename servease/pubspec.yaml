@@ -75,25 +75,25 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  fonts:
-    - family: sans_regular
-      fonts:
-        - asset: assets/fonts/sans_regular
-    - family: sans_semibold
-      fonts:
-        - asset: assets/fonts/sans_semibold
-    - family: sans_bold
-      fonts:
-        - asset: assets/fonts/sans_bold
-    - family: jockey
-      fonts:
-        - asset: assets/fonts/jockey
-    - family: Akshar
-      fonts:
-        - asset: assets/fonts/Akshar
-    - family: BAUH
-      fonts:
-        - asset: assets/fonts/BAUH
+  # fonts:
+    # - family: sans_regular
+    #   fonts:
+    #     - asset: assets/fonts/sans_regular
+    # - family: sans_semibold
+    #   fonts:
+    #     - asset: assets/fonts/sans_semibold
+    # - family: sans_bold
+    #   fonts:
+    #     - asset: assets/fonts/sans_bold
+    # - family: jockey
+    #   fonts:
+    #     - asset: assets/fonts/jockey
+    # - family: Akshar
+    #   fonts:
+    #     - asset: assets/fonts/Akshar
+    # - family: BAUH
+    #   fonts:
+    #     - asset: assets/fonts/BAUH
         
         # - asset: fonts/Schyler-Italic.ttf
         #   style: italic
