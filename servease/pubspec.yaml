@@ -85,6 +85,9 @@ flutter:
     - family: sans_bold
       fonts:
         - asset: assets/fonts/sans_bold
+    - family: jockey
+      fonts:
+        - asset: assets/fonts/jockey
         
         # - asset: fonts/Schyler-Italic.ttf
         #   style: italic
