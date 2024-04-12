@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:servease/views/skip/skip_screen.dart';
+import 'package:servease/views/skip/skip_screen1.dart';
 import 'package:servease/views/splash_screen/splash_screen.dart';
 
 void main() {
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
 
       ),
-      home: splashscreen(),
+      home: const skipscreen1(),
     );
   }
 }
