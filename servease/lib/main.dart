@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:servease/views/skip/skip_screen.dart';
+import 'package:servease/views/splash_screen/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,13 +12,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'servease',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
 
       ),
-      home: skipscreen(),
+      home: splashscreen(),
     );
   }
 }

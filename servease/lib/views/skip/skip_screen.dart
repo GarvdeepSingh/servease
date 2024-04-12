@@ -3,10 +3,11 @@ import 'dart:math';
 
 import 'package:servease/consts/consts.dart';
 import 'package:servease/widgets_common/skipscreen/screen1.dart';
+// ignore: unnecessary_import
 import 'package:velocity_x/velocity_x.dart';
 
 class skipscreen extends StatelessWidget {
-  
+  const skipscreen({super.key});
 
   @override
   Widget build(BuildContext context) {

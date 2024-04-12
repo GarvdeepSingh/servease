@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:servease/consts/colors.dart';
 import 'package:servease/consts/consts.dart';
-import 'package:servease/consts/images.dart';
-import 'package:servease/consts/styles.dart';
-import 'package:servease/consts/strings.dart';
 import 'dart:ffi';
-
+import 'package:servease/views/skip/skip_screen.dart';
+import 'package:get/get.dart';
 class splashscreen extends StatefulWidget {
   const splashscreen({super.key});
 
@@ -14,8 +12,17 @@ class splashscreen extends StatefulWidget {
 }
 
 class splashscreenState extends State<splashscreen> {
+
+
+ changescreen(){
+    Future.delayed(const Duration(seconds: 3),(){
+      Get.to(() => skipscreen());
+    });
+  }
+
   void initState() {
     super.initState();
+    changescreen();
   }
 
   @override
@@ -25,12 +32,10 @@ class splashscreenState extends State<splashscreen> {
         body: Center(
           child: Column(
             children: [
-              Align(
-                  alignment: Alignment.topLeft,
-                  child: Image.asset(
+                    Image.asset(
                     'assets/images/charity box.png',
                     width: 300,
-                  )),
+                  ),
               // 20.heightBox,
               // applogowidget(),
               // 10.heightBox,
