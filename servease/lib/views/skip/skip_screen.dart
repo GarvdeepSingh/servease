@@ -2,6 +2,7 @@
 import 'dart:math';
 
 import 'package:servease/consts/consts.dart';
+import 'package:servease/widgets_common/skipscreen/screen1.dart';
 
 class skipscreen extends StatelessWidget {
   
@@ -15,12 +16,16 @@ class skipscreen extends StatelessWidget {
 
 
       body: Center(
-        child: Column(children: [
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Image.asset(para1,width: 300,)),
-          
-        ]),
+        child: Column(
+          children: [
+            20.heightBox,
+            Align(
+              alignment: Alignment.center,
+              child: screenwidget1(),
+              
+            )
+          ],
+        )
       )
     
     );
