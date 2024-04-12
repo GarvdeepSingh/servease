@@ -1,10 +1,28 @@
-import 'package:flutter/material.dart';
+// ignore: unused_import
+import 'dart:math';
+
+import 'package:servease/consts/consts.dart';
 
 class skipscreen extends StatelessWidget {
-  const skipskreen({super.key});
+  
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+
+    //it will help us to return size of screen
+    Size size = MediaQuery.of(context).size;
+    return Scaffold(
+
+
+      body: Center(
+        child: Column(children: [
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Image.asset(para1,width: 300,)),
+          
+        ]),
+      )
+    
+    );
   }
 }
