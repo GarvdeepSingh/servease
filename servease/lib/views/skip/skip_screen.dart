@@ -18,12 +18,30 @@ class skipscreen extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            20.heightBox,
+            200.heightBox,
             Align(
               alignment: Alignment.center,
               child: screenwidget1(),
-              
-            )
+              ),
+            10.heightBox,
+            const Text('Every service', style: TextStyle(
+              fontSize: 50,
+              color: color1,
+              fontWeight: FontWeight.normal,
+              fontFamily: ba,
+            ),),
+            
+            const SizedBox(
+              width: 350,
+             
+               child:Text('Everyday services at any \n hour at your doorstep one \nclick away!',style: TextStyle(
+                fontSize: 20,
+                color: color1,
+                fontWeight: FontWeight.bold,
+                fontFamily: ak,
+              ),textAlign: TextAlign.center,
+            )),
+
           ],
         )
       )
