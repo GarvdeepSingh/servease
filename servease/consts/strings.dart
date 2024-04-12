@@ -1,0 +1,12 @@
+const appname = "servease";
+const appversion = "Version 1.0.0";
+const credits = "coders in shades";
+const email="Email";
+const emailhint="admin@admin.com";
+const password="Password";
+const passwordhint="*******";
+const forgetpass="Forget password";
+const login="Log in";
+const signup="Sign up";
+const createnewaccount="or, create a new account";
+const loginwith="Log in with";
