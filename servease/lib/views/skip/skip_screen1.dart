@@ -1,6 +1,7 @@
 // ignore: unused_import
 import 'package:get/get.dart';
 import 'package:servease/consts/consts.dart';
+import 'package:servease/views/auth/auth_s1.dart';
 import 'package:servease/views/skip/skip_screen.dart';
 
 class onboard extends StatefulWidget {
@@ -33,7 +34,7 @@ class __onboardState extends State<onboard> {
   PageController pageController = PageController();
 
 continuemethod(){
-  Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const skipscreen()), 
+  Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const authscreen1()), 
   (Route<dynamic> route) => false);
   
 

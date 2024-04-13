@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "184524377173",
+    "project_id": "demo1-2060d",
+    "storage_bucket": "demo1-2060d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:184524377173:android:ddf24c9543547090ff98dc",
+        "android_client_info": {
+          "package_name": "com.example.servease"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcr9KISeAn-5s5-ev3zZ8FI7WBOYc5ZlM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
