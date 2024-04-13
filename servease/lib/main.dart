@@ -7,8 +7,9 @@ import 'package:servease/views/skip/skip_screen.dart';
 import 'package:servease/views/skip/skip_screen1.dart';
 import 'package:servease/views/splash_screen/splash_screen.dart';
 
-void main()async{
+Future<void> main()async{
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 

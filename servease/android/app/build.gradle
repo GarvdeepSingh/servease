@@ -2,7 +2,6 @@ plugins {
     id "com.android.application"
     id "kotlin-android"
     id "dev.flutter.flutter-gradle-plugin"
-    id 'com.google.gms.google-services'
 }
 
 def localProperties = new Properties()
@@ -22,7 +21,7 @@ def flutterVersionName = localProperties.getProperty('flutter.versionName')
 if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
-
+apply plugin: 'com.google.gms.google-services'
 android {
     namespace "com.example.servease"
     compileSdkVersion flutter.compileSdkVersion
@@ -65,6 +64,4 @@ flutter {
     source '../..'
 }
 
-dependencies {
-    
-}
+dependencies {}
