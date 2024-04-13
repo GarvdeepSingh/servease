@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 // ignore: unused_import
@@ -6,7 +7,8 @@ import 'package:servease/views/skip/skip_screen.dart';
 import 'package:servease/views/skip/skip_screen1.dart';
 import 'package:servease/views/splash_screen/splash_screen.dart';
 
-void main() {
+void main()async{
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
