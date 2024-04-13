@@ -8,8 +8,8 @@ import 'package:servease/views/skip/skip_screen.dart';
 import 'package:servease/views/skip/skip_screen1.dart';
 import 'package:servease/views/splash_screen/splash_screen.dart';
 
-void main(){
-//   WidgetsFlutterBinding.ensureInitialized();
+void main() async {
+  // WidgetsFlutterBinding.ensureInitialized();
 //   if (kIsWeb) {
 //   await Firebase.initializeApp(
 //       options: const FirebaseOptions(
