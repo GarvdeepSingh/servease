@@ -9,20 +9,20 @@ import 'package:servease/views/skip/skip_screen1.dart';
 import 'package:servease/views/splash_screen/splash_screen.dart';
 
 void main() async {
-  // WidgetsFlutterBinding.ensureInitialized();
-//   if (kIsWeb) {
-//   await Firebase.initializeApp(
-//       options: const FirebaseOptions(
-//           apiKey: "AIzaSyCGtSpqY0-aG5zS9kgJR2Z6FQVN5dtUBz8",
-//           authDomain: "demo1-2060d.firebaseapp.com",
-//           projectId: "demo1-2060d",
-//           storageBucket: "demo1-2060d.appspot.com",
-//           messagingSenderId: "184524377173",
-//           appId: "1:184524377173:web:80332c0641f8e78bff98dc"));
+  WidgetsFlutterBinding.ensureInitialized();
+  if (kIsWeb) {
+  await Firebase.initializeApp(
+      options: const FirebaseOptions(
+          apiKey: "AIzaSyCGtSpqY0-aG5zS9kgJR2Z6FQVN5dtUBz8",
+          authDomain: "demo1-2060d.firebaseapp.com",
+          projectId: "demo1-2060d",
+          storageBucket: "demo1-2060d.appspot.com",
+          messagingSenderId: "184524377173",
+          appId: "1:184524377173:web:80332c0641f8e78bff98dc"));
   
-// }else{
-//   await Firebase.initializeApp();
-// }
+}else{
+  await Firebase.initializeApp();
+}
 runApp(const MyApp());
 }
 
