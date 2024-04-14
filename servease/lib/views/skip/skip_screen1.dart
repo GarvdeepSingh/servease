@@ -2,6 +2,7 @@
 import 'package:get/get.dart';
 import 'package:servease/consts/consts.dart';
 import 'package:servease/views/auth/auth_s1.dart';
+import 'package:servease/views/auth/wrapper.dart';
 // ignore: unused_import
 import 'package:servease/views/skip/skip_screen.dart';
 
@@ -35,7 +36,7 @@ class __onboardState extends State<onboard> {
   PageController pageController = PageController();
 
 continuemethod(){
-  Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const authscreen1()), 
+  Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const mywrapper()), 
   (Route<dynamic> route) => false);
   
 
