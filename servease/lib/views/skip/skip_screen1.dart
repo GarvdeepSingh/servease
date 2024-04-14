@@ -2,6 +2,7 @@
 import 'package:get/get.dart';
 import 'package:servease/consts/consts.dart';
 import 'package:servease/views/auth/auth_s1.dart';
+// ignore: unused_import
 import 'package:servease/views/skip/skip_screen.dart';
 
 class onboard extends StatefulWidget {
