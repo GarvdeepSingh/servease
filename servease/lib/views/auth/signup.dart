@@ -17,7 +17,7 @@ class _signupState extends State<mysignup> {
 
   signun() async {
     await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email.text, password: passwaord.text);
-    Get.offAll(mywrapper());
+    Get.offAll(const mywrapper());
   }
   @override
   Widget build(BuildContext context) {
@@ -30,14 +30,14 @@ class _signupState extends State<mysignup> {
           children: [
             TextField(
               controller: email,
-              decoration: InputDecoration(hintText: 'enter email'),
+              decoration: const InputDecoration(hintText: 'enter email'),
             ),
             TextField(
               controller: passwaord,
-              decoration: InputDecoration(hintText: 'password'),
+              decoration: const InputDecoration(hintText: 'password'),
             ),
 
-            ElevatedButton(onPressed: (()=>mysignup()), child: Text('signup'))
+            ElevatedButton(onPressed: (()=>const mysignup()), child: const Text('signup'))
           ],
         ),
       ),

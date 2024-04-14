@@ -41,9 +41,9 @@ class _loginState extends State<loginpage> {
 
             ElevatedButton(onPressed: (()=>signin()), child: Text('login')),
             const SizedBox(height: 30,),
-            ElevatedButton(onPressed: (()=>Get.to(mysignup())), child: Text('register now')),
+            ElevatedButton(onPressed: (()=>Get.to(() =>mysignup())), child: Text('register now')),
             const SizedBox(height: 30,),
-            ElevatedButton(onPressed: (()=>Get.to(forgot())), child: Text('forgot password')),
+            ElevatedButton(onPressed: (()=>Get.to(() =>forgot())), child: Text('forgot password')),
           ],
         ),
       ),
