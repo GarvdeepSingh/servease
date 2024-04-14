@@ -98,6 +98,12 @@ flutter:
     - family: BAUH
       fonts:
         - asset: assets/fonts/BAUH.ttf
+    - family : pro
+      fonts:
+        - asset: assets/fonts/pro.ttf
+    - family : pro-bold
+      fonts:
+        - asset: assets/fonts/pro-bold.ttf    
         
         # - asset: fonts/Schyler-Italic.ttf
         #   style: italic

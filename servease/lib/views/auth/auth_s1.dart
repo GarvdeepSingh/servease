@@ -1,4 +1,3 @@
-
 import 'package:servease/consts/consts.dart';
 
 class authscreen1 extends StatelessWidget {
@@ -6,7 +5,14 @@ class authscreen1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+        body: Container(
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("assets/images/bg-login.png"),
+          fit: BoxFit.cover,
+        ),
+      ),
+    ));
   }
 }
-
