@@ -1,7 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 // ignore: unused_import
 import 'package:firebase_core/firebase_core.dart';
+import 'package:get/get.dart';
 import 'package:servease/consts/consts.dart';
+import 'package:servease/views/auth/forgot.dart';
+import 'package:servease/views/auth/signup.dart';
 
 class loginpage extends StatefulWidget {
   const loginpage({super.key});
@@ -36,7 +39,11 @@ class _loginState extends State<loginpage> {
               decoration: InputDecoration(hintText: 'password'),
             ),
 
-            ElevatedButton(onPressed: (()=>signin()), child: Text('login'))
+            ElevatedButton(onPressed: (()=>signin()), child: Text('login')),
+            const SizedBox(height: 30,),
+            ElevatedButton(onPressed: (()=>Get.to(mysignup())), child: Text('register now')),
+            const SizedBox(height: 30,),
+            ElevatedButton(onPressed: (()=>Get.to(forgot())), child: Text('forgot password')),
           ],
         ),
       ),
