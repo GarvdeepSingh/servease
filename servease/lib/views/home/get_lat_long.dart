@@ -74,7 +74,7 @@ class _getlatlongscreenState extends State<getlatlongscreen> {
     getAddress(lat, long) async {
     List<Placemark> placemarks = await placemarkFromCoordinates(lat, long);
     setState(() {
-      address = placemarks[0].subLocality! + " " + placemarks[0].country!;
+      address = placemarks[3].street! + " " + placemarks[3].subLocality!;
     });
 
     for (int i = 0; i < placemarks.length; i++) {
@@ -84,11 +84,6 @@ class _getlatlongscreenState extends State<getlatlongscreen> {
   
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color(0xFF0D39F2),
-        centerTitle: true,
-        title: const Text("Get Location"),
-      ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(

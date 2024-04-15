@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:servease/consts/consts.dart';
 import 'package:servease/views/auth/login.dart';
+import 'package:servease/views/home/get_lat_long.dart';
 import 'package:servease/views/home/home.dart';
 
 class mywrapper extends StatefulWidget {
@@ -18,7 +19,7 @@ class _mywrapperState extends State<mywrapper> {
     return Scaffold(
       body: StreamBuilder(stream: FirebaseAuth.instance.authStateChanges(), builder: ((context, snapshot) {
         if(snapshot.hasData){
-          return homepage();
+          return getlatlongscreen();
         }else{
           return loginpage();
         }
