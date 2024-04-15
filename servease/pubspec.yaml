@@ -38,14 +38,10 @@ dependencies:
   velocity_x: ^4.1.2
   get: ^4.6.6
   firebase_core: ^2.24.2
-<<<<<<< Updated upstream
-  firebase_auth: ^4.15.2
   geolocator: ^11.0.0
   geocoding: ^3.0.0
-=======
   firebase_auth: ^4.19.1
   google_sign_in: ^6.2.1
->>>>>>> Stashed changes
 
 dev_dependencies:
   flutter_test:
