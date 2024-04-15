@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:servease/views/home/get_lat_long.dart';
 // ignore: unused_import
 import 'package:servease/views/skip/skip_screen.dart';
 // ignore: unused_import
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
       title: 'servease',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),
-      home: const splashscreen(),
+      home: const getlatlongscreen(),
     );
   }
 }
