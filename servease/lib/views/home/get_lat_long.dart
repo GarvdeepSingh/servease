@@ -1,3 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
+// ignore: unused_import
+import 'package:firebase_core/firebase_core.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:servease/consts/consts.dart';
@@ -82,7 +85,9 @@ class _getlatlongscreenState extends State<getlatlongscreen> {
       print("INDEX $i ${placemarks[i]}");
     }
   }
-  
+  signout() async {
+    await FirebaseAuth.instance.signOut();
+  }
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
@@ -101,6 +106,9 @@ class _getlatlongscreenState extends State<getlatlongscreen> {
                 
               ),
             ),
+            ElevatedButton(onPressed: signout, child: Text('sign out'),)
+
+
           ],
         ),
       ),
