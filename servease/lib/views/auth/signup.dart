@@ -15,7 +15,7 @@ class _signupState extends State<mysignup> {
   TextEditingController email=TextEditingController();
   TextEditingController passwaord=TextEditingController();
 
-  signun() async {
+  signup() async {
     await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email.text, password: passwaord.text);
     Get.offAll(const mywrapper());
   }
@@ -37,7 +37,7 @@ class _signupState extends State<mysignup> {
               decoration: const InputDecoration(hintText: 'password'),
             ),
 
-            ElevatedButton(onPressed: (()=>const mysignup()), child: const Text('signup'))
+            ElevatedButton(onPressed: (()=> signup()), child: const Text('signup'))
           ],
         ),
       ),
