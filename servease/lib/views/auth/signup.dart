@@ -11,20 +11,22 @@ class mysignup extends StatefulWidget {
 }
 
 class _signupState extends State<mysignup> {
+  TextEditingController email = TextEditingController();
+  TextEditingController passwaord = TextEditingController();
 
-  TextEditingController email=TextEditingController();
-  TextEditingController passwaord=TextEditingController();
-
-  signun() async {
-    await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email.text, password: passwaord.text);
+  signup() async {
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email.text, password: passwaord.text);
     Get.offAll(const mywrapper());
   }
+
   @override
   Widget build(BuildContext context) {
-  return Scaffold(
-      appBar: AppBar(title: Text("signup"),),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("signup"),
+      ),
       body: Padding(
-
         padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
@@ -36,12 +38,11 @@ class _signupState extends State<mysignup> {
               controller: passwaord,
               decoration: const InputDecoration(hintText: 'password'),
             ),
-
-            ElevatedButton(onPressed: (()=>const mysignup()), child: const Text('signup'))
+            ElevatedButton(
+                onPressed: (() => signup()), child: const Text('signup'))
           ],
         ),
       ),
-
     );
   }
 }

@@ -12,7 +12,20 @@
           "package_name": "com.example.servease"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "184524377173-7negmq78g81mjj9269etc7hln6matrrp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.servease",
+            "certificate_hash": "d102513585b4203342fc05da48dfc8cdaf030370"
+          }
+        },
+        {
+          "client_id": "184524377173-r26p8hhq98hec701hdvmm5l6u1hqhb6j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDcr9KISeAn-5s5-ev3zZ8FI7WBOYc5ZlM"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "184524377173-c7h1tah9590ju62jg72bdrcmii2cb314.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "184524377173-rlrj2qbh0qd9a5k14nicmctppblpmrt6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.servease"
+              }
+            }
+          ]
         }
       }
     }
