@@ -15,7 +15,7 @@ class google extends StatelessWidget {
           onPressed: () {
             signInWithGoogle();
           },
-          child: Text('Login with Google'),
+          child: Text('Google sign-up'),
         ),
       ),
     );
