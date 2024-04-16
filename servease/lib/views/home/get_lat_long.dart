@@ -78,7 +78,7 @@ class _getlatlongscreenState extends State<getlatlongscreen> {
     getAddress(lat, long) async {
     List<Placemark> placemarks = await placemarkFromCoordinates(lat, long);
     setState(() {
-      address = placemarks[3].street! + " " + placemarks[3].subLocality!;
+      address = placemarks[3].street! + " " + placemarks[4].subLocality!;
     });
 
     for (int i = 0; i < placemarks.length; i++) {
