@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:servease/consts/colors.dart';
+// import 'package:servease/consts/colors.dart';
 import 'package:servease/consts/consts.dart';
 // ignore: unused_import
 import 'dart:ffi';
 import 'package:get/get.dart';
 import 'package:servease/views/skip/skip_screen1.dart';
-import 'package:servease/widgets_common/splash.dart';
+// ignore: unused_import
 import 'package:velocity_x/velocity_x.dart';
 
 class splashscreen extends StatefulWidget {
@@ -17,7 +17,7 @@ class splashscreen extends StatefulWidget {
 
 class splashscreenState extends State<splashscreen> {
   changescreen() {
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 3), () {
       Get.to(() => onboard());
     });
   }
@@ -30,23 +30,29 @@ class splashscreenState extends State<splashscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
-            child: Column(children: [
-      325.heightBox,
-      Align(
-        alignment: Alignment.center,
-        child: splash(),
-      ),
-      10.heightBox,
-      const Text(
-        'SERVEASE',
-        style: TextStyle(
-          fontSize: 60,
-          color: color1,
-          fontWeight: FontWeight.normal,
-          fontFamily: jk,
+      backgroundColor: Color.fromARGB(255, 250, 198, 44),
+      body: Center(
+        child: RichText(
+          text: TextSpan(
+            style: TextStyle(color: Colors.black, fontSize: 60),
+            children: [
+              TextSpan(
+                text: 'SERV',
+                style: TextStyle(
+                    fontFamily: 'assets/fomts/jom.ttf',
+                    fontWeight: FontWeight.bold,
+                    color: whiteColor),
+              ),
+              TextSpan(
+                text: 'ease',
+                style: TextStyle(
+                    fontFamily: 'assets/fomts/jom.ttf',
+                    fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
         ),
       ),
-    ])));
+    );
   }
 }

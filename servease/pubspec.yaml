@@ -29,7 +29,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   flutter:
-    sdk: flutter
+    sdk: flutter 
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -38,12 +38,16 @@ dependencies:
   velocity_x: ^4.1.2
   get: ^4.6.6
   firebase_core: ^2.24.2
-  geolocator: ^11.0.0
-  geocoding: ^3.0.0
   firebase_auth: ^4.19.1
   google_sign_in: ^6.2.1
+<<<<<<< Updated upstream
   cloud_firestore: ^4.17.0
   
+=======
+  geolocator: ^11.0.0
+  geocoding: ^3.0.0
+  cloud_firestore: ^4.17.0
+>>>>>>> Stashed changes
 
 dev_dependencies:
   flutter_test:
@@ -71,6 +75,7 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    
     # - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -108,7 +113,10 @@ flutter:
         - asset: assets/fonts/pro.ttf
     - family : pro-bold
       fonts:
-        - asset: assets/fonts/pro-bold.ttf    
+        - asset: assets/fonts/pro-bold.ttf
+    - family : jom
+      fonts:
+        - asset: assets/fonts/jom.ttf        
         
         # - asset: fonts/Schyler-Italic.ttf
         #   style: italic
