@@ -18,7 +18,7 @@ class splashscreen extends StatefulWidget {
 class splashscreenState extends State<splashscreen> {
   changescreen() {
     Future.delayed(const Duration(seconds: 3), () {
-      Get.to(() => onboard());
+      Get.to(() => const onboard());
     });
   }
 
@@ -30,11 +30,11 @@ class splashscreenState extends State<splashscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 250, 198, 44),
+      backgroundColor: const Color.fromARGB(255, 250, 198, 44),
       body: Center(
         child: RichText(
-          text: TextSpan(
-            style: TextStyle(color: Colors.black, fontSize: 60),
+          text: const TextSpan(
+            style: const TextStyle(color: Colors.black, fontSize: 60),
             children: [
               TextSpan(
                 text: 'SERV',
