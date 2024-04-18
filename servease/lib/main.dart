@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:servease/views/google_auth/sign_in.dart';
 // ignore: unused_import
 import 'package:servease/views/home/get_lat_long.dart';
+// ignore: unused_import
 import 'package:servease/views/home/home.dart';
 // ignore: unused_import
 import 'package:servease/views/skip/skip_screen.dart';
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
       title: 'servease',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),
-      home: const homepage(),
+      home: const splashscreen(),
     );
   }
 }
