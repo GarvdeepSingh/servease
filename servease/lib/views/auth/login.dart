@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:servease/consts/consts.dart';
 import 'package:servease/views/auth/forgot.dart';
 import 'package:servease/views/auth/signup.dart';
-import 'package:servease/views/google_auth/sign_in.dart';
+import 'package:servease/views/auth/sign_in.dart';
 
 class loginpage extends StatefulWidget {
   const loginpage({super.key});

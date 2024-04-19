@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 // ignore: unused_import
-import 'package:servease/views/google_auth/sign_in.dart';
+import 'package:servease/views/auth/sign_in.dart';
 // ignore: unused_import
 import 'package:servease/views/home/get_lat_long.dart';
 // ignore: unused_import

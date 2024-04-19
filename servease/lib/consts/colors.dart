@@ -10,3 +10,4 @@ const Color golden = Color.fromRGBO(255, 168, 0, 1);
 const Color color1 =Color.fromARGB(255, 0, 0, 0);
 const Color color2 =Color.fromARGB(255, 255, 132, 0);
 const Color color3 =Color.fromARGB(255, 109, 109, 109);
+const Color color4 =Color.fromARGB(255, 240, 198, 48);

@@ -4,6 +4,7 @@ import 'package:servease/consts/consts.dart';
 // ignore: unused_import
 import 'dart:ffi';
 import 'package:get/get.dart';
+import 'package:servease/views/auth/auth_1.dart';
 import 'package:servease/views/skip/skip_screen1.dart';
 // ignore: unused_import
 import 'package:velocity_x/velocity_x.dart';
@@ -18,7 +19,7 @@ class splashscreen extends StatefulWidget {
 class splashscreenState extends State<splashscreen> {
   changescreen() {
     Future.delayed(const Duration(seconds: 3), () {
-      Get.to(() => const onboard());
+      Get.to(() => const auth());
     });
   }
 
@@ -30,11 +31,11 @@ class splashscreenState extends State<splashscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 250, 198, 44),
+      backgroundColor: Color.fromARGB(255, 250, 198, 44),
       body: Center(
         child: RichText(
           text: const TextSpan(
-            style: const TextStyle(color: Colors.black, fontSize: 60),
+            style: const TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontSize: 60),
             children: [
               TextSpan(
                 text: 'SERV',
