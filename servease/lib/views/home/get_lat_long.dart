@@ -21,7 +21,6 @@ class _getlatlongscreenState extends State<getlatlongscreen> {
 
   String address = "";
 
-
   Future<Position> _determinePosition() async {
     bool serviceEnabled;
     LocationPermission permission;
@@ -60,7 +59,7 @@ class _getlatlongscreenState extends State<getlatlongscreen> {
         desiredAccuracy: LocationAccuracy.high);
   }
 
-    getLatLong() {
+  getLatLong() {
     Future<Position> data = _determinePosition();
     data.then((value) {
       print("value $value");
@@ -75,19 +74,21 @@ class _getlatlongscreenState extends State<getlatlongscreen> {
     });
   }
 
-    getAddress(lat, long) async {
+  getAddress(lat, long) async {
     List<Placemark> placemarks = await placemarkFromCoordinates(lat, long);
     setState(() {
-      address = placemarks[3].street! + " " + placemarks[4].subLocality!;
+      address = placemarks[1].subLocality! + " " + placemarks[1].locality!;
     });
 
     for (int i = 0; i < placemarks.length; i++) {
       print("INDEX $i ${placemarks[i]}");
     }
   }
+
   signout() async {
     await FirebaseAuth.instance.signOut();
   }
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
@@ -102,13 +103,12 @@ class _getlatlongscreenState extends State<getlatlongscreen> {
             ElevatedButton(
               onPressed: getLatLong,
               child: const Text("Get Location"),
-              style: ElevatedButton.styleFrom(
-                
-              ),
+              style: ElevatedButton.styleFrom(),
             ),
-            ElevatedButton(onPressed: signout, child: Text('sign out'),)
-
-
+            ElevatedButton(
+              onPressed: signout,
+              child: Text('sign out'),
+            )
           ],
         ),
       ),
