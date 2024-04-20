@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
       title: 'servease',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),
-      home: const homepage(),
+      home: const splashscreen(),
     );
   }
 }
