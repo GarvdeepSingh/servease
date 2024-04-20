@@ -33,20 +33,31 @@ class _homepageState extends State<homepage> {
   }
 
   @override
-  void initState() {
-    getDocId();
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("home page"),
       ),
       body: Center(
-          // child: Text('${User!.email}'),
-          ),
+        // child: Text('${User!.email}'),
+        child: Column(
+          children: [
+            Expanded(
+                child: FutureBuilder(
+              future: getDocId(),
+              builder: (context, snapshot) {
+                return ListView.builder(
+                    itemCount: docIDs.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        title: Text(docIDs[index]),
+                      );
+                    });
+              },
+            ))
+          ],
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => signout(),
         child: const Icon(Icons.login_rounded),
