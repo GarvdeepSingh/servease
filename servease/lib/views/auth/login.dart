@@ -40,7 +40,7 @@ class _loginState extends State<loginpage> {
               decoration: InputDecoration(hintText: 'password'),
             ),
 
-            ElevatedButton(onPressed: (()=>signin()), child: Text('login')),
+            ElevatedButton(onPressed: (()=>signin()), child: Text('loginFAST')),
             const SizedBox(height: 30,),
             ElevatedButton(onPressed: (()=>Get.to(() =>mysignup())), child: Text('register now')),
             const SizedBox(height: 30,),
