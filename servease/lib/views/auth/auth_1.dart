@@ -51,7 +51,7 @@ class _authState extends State<auth> {
           child: screenwidget1(),
         ),
          const SizedBox(height: 50,),
-         OutlinedButton(onPressed: (()=>Get.to(() =>mysignup())), child: Text('Continue to Login / Signup'),style:OutlinedButton.styleFrom(
+         OutlinedButton(onPressed: (()=>Get.to(() =>loginpage())), child: Text('Continue to Login / Signup'),style:OutlinedButton.styleFrom(
           minimumSize: Size(280, 60),
           textStyle: TextStyle(fontSize: 20),
           side: BorderSide(width: 2,color: Color.fromARGB(255, 250, 198, 48)),
