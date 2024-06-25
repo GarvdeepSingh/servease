@@ -1,30 +1,24 @@
 import 'package:firebase_auth/firebase_auth.dart';
-// ignore: unused_import
-import 'package:firebase_core/firebase_core.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:servease/consts/consts.dart';
+import 'package:flutter/material.dart';
 
-class getlatlongscreen extends StatefulWidget {
-  const getlatlongscreen({super.key});
+class GetLatLongScreen extends StatefulWidget {
+  const GetLatLongScreen({Key? key}) : super(key: key);
 
   @override
-  State<getlatlongscreen> createState() => _getlatlongscreenState();
+  State<GetLatLongScreen> createState() => _GetLatLongScreenState();
 }
 
-class _getlatlongscreenState extends State<getlatlongscreen> {
-  @override
+class _GetLatLongScreenState extends State<GetLatLongScreen> {
+  String address = "Fetching location...";
+  String error = "";
 
-  void initstate(){
+  @override
+  void initState() {
     super.initState();
     getLatLong();
   }
-  // ignore: override_on_non_overriding_member
-  double? lat;
-
-  double? long;
-
-  String address = "";
 
   Future<Position> _determinePosition() async {
     bool serviceEnabled;
@@ -33,9 +27,6 @@ class _getlatlongscreenState extends State<getlatlongscreen> {
     // Test if location services are enabled.
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      // Location services are not enabled don't continue
-      // accessing the position and request users of the
-      // App to enable the location services.
       return Future.error('Location services are disabled.');
     }
 
@@ -43,80 +34,84 @@ class _getlatlongscreenState extends State<getlatlongscreen> {
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        // Permissions are denied, next time you could try
-        // requesting permissions again (this is also where
-        // Android's shouldShowRequestPermissionRationale
-        // returned true. According to Android guidelines
-        // your App should show an explanatory UI now.
         return Future.error('Location permissions are denied');
       }
     }
 
     if (permission == LocationPermission.deniedForever) {
-      // Permissions are denied forever, handle appropriately.
       return Future.error(
           'Location permissions are permanently denied, we cannot request permissions.');
     }
 
-    // When we reach here, permissions are granted and we can
-    // continue accessing the position of the device.
     return await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
   }
 
-  getLatLong() {
-    Future<Position> data = _determinePosition();
-    data.then((value) {
-      print("value $value");
-      setState(() {
-        lat = value.latitude;
-        long = value.longitude;
-      });
-
+  void getLatLong() {
+    _determinePosition().then((value) {
       getAddress(value.latitude, value.longitude);
     }).catchError((error) {
-      print("Error $error");
+      setState(() {
+        this.error = error.toString();
+      });
     });
   }
 
-  getAddress(lat, long) async {
-    List<Placemark> placemarks = await placemarkFromCoordinates(lat, long);
-    setState(() {
-      address = placemarks[1].subLocality! + " " + placemarks[1].locality!;
-    });
-
-    for (int i = 0; i < placemarks.length; i++) {
-      print("INDEX $i ${placemarks[i]}");
+  void getAddress(double lat, double long) async {
+    try {
+      List<Placemark> placemarks = await placemarkFromCoordinates(lat, long);
+      setState(() {
+        address = placemarks.isNotEmpty
+            ? "${placemarks[0].subLocality}, ${placemarks[0].locality}"
+            : "Unknown location";
+      });
+    } catch (e) {
+      setState(() {
+        error = e.toString();
+      });
     }
   }
 
-  signout() async {
-    await FirebaseAuth.instance.signOut();
-  }
-
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Text("Lat : $lat"),
-            Text("Long : $long"),
-            Text("Address : $address "),
-            ElevatedButton(
-              onPressed: getLatLong,
-              child: const Text("Get Location"),
-              style: ElevatedButton.styleFrom(),
+      appBar: AppBar(
+        title: Center(
+          child: Text(
+            error.isEmpty ? address : "Error",
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontSize: 18),
+          ),
+        ),
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(kToolbarHeight + 2),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 2),
+            child: Container(
+              height: 40,
+              width: 366.0,
+              padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255, 148, 148, 148),
+                borderRadius: BorderRadius.circular(19.94),
+              ),
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: 'Search',
+                  hintStyle: TextStyle(fontSize: 16),
+                  contentPadding: EdgeInsets.all(6),
+                  border: InputBorder.none,
+                  prefixIcon: Icon(Icons.search),
+                ),
+                onChanged: (value) {
+                  // Handle search functionality here
+                },
+              ),
             ),
-            ElevatedButton(
-              onPressed: signout,
-              child: Text('sign out'),
-            )
-          ],
+          ),
         ),
       ),
+       
     );
   }
 }

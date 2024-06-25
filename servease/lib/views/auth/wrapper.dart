@@ -20,7 +20,7 @@ class _mywrapperState extends State<mywrapper> {
     return Scaffold(
       body: StreamBuilder(stream: FirebaseAuth.instance.authStateChanges(), builder: ((context, snapshot) {
         if(snapshot.hasData){
-          return getlatlongscreen();
+          return GetLatLongScreen();
         }else{
           return loginpage();
         }
