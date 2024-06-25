@@ -14,6 +14,11 @@ class getlatlongscreen extends StatefulWidget {
 
 class _getlatlongscreenState extends State<getlatlongscreen> {
   @override
+
+  void initstate(){
+    super.initState();
+    getLatLong();
+  }
   // ignore: override_on_non_overriding_member
   double? lat;
 
