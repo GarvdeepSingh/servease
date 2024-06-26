@@ -1,8 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:flutter/material.dart';
-import 'package:servease/widgets_common/cat_mod.dart';
+import 'package:servease/widgets_common/cat_mod.dart'; // Assuming you have this import for category data
 
 class GetLatLongScreen extends StatefulWidget {
   const GetLatLongScreen({Key? key}) : super(key: key);
@@ -116,7 +115,7 @@ class _GetLatLongScreenState extends State<GetLatLongScreen> {
       ),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(12),
+          padding: EdgeInsets.all(8),
           child: Column(
             children: [
               Align(
@@ -152,6 +151,8 @@ class _GetLatLongScreenState extends State<GetLatLongScreen> {
                                 borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(10),
                                   topRight: Radius.circular(10),
+                                  bottomLeft: Radius.circular(10),
+                                  bottomRight: Radius.circular(10),
                                 ),
                               ),
                               child: Center(
@@ -159,7 +160,7 @@ class _GetLatLongScreenState extends State<GetLatLongScreen> {
                               ),
                             ),
                             Container(
-                              height: 60,
+                              height: 30,
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.only(
@@ -169,6 +170,73 @@ class _GetLatLongScreenState extends State<GetLatLongScreen> {
                               ),
                               child: Center(
                                 child: Text(
+                                  Categorydata[index].name,
+                                  style: TextStyle(fontSize: 14),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(child: 
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Grabe Deal",
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),),
+              SizedBox(height: 20), // Space between category sliders
+              SizedBox(
+                height: 140,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: Categorydata.length, // Update with your actual category count
+                  itemBuilder: (context, index) => Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Material(
+                      elevation: 0,
+                      borderRadius: BorderRadius.circular(10),
+                      child: Container(
+                        height: 120,
+                        width: 80,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Column(
+                          children: [
+                            Container(
+                              height: 60,
+                              decoration: BoxDecoration(
+                                color: Color.fromARGB(255, 238, 238, 238),
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(10),
+                                  topRight: Radius.circular(10),
+                                  bottomLeft: Radius.circular(10),
+                                  bottomRight: Radius.circular(10),
+                                ),
+                              ),
+                              child: Center(
+                                child: Icon(Categorydata[index].icon),
+                              ),
+                            ),
+                            Container(
+                              height: 30,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(10),
+                                  bottomRight: Radius.circular(10),
+                                ),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  
                                   Categorydata[index].name,
                                   style: TextStyle(fontSize: 14),
                                 ),
