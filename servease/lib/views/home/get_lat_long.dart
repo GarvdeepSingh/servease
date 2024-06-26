@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter/material.dart';
+import 'package:servease/widgets_common/cat_mod.dart';
 
 class GetLatLongScreen extends StatefulWidget {
   const GetLatLongScreen({Key? key}) : super(key: key);
@@ -92,7 +93,7 @@ class _GetLatLongScreenState extends State<GetLatLongScreen> {
               width: 366.0,
               padding: EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 148, 148, 148),
+                color: Color.fromARGB(255, 238, 238, 238),
                 borderRadius: BorderRadius.circular(19.94),
               ),
               child: TextField(
@@ -102,6 +103,8 @@ class _GetLatLongScreenState extends State<GetLatLongScreen> {
                   contentPadding: EdgeInsets.all(6),
                   border: InputBorder.none,
                   prefixIcon: Icon(Icons.search),
+                  filled: true,
+                  fillColor: Color(0xFFEEEEEE), // Set the search bar color here
                 ),
                 onChanged: (value) {
                   // Handle search functionality here
@@ -111,7 +114,77 @@ class _GetLatLongScreenState extends State<GetLatLongScreen> {
           ),
         ),
       ),
-       
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.all(12),
+          child: Column(
+            children: [
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Category",
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
+              SizedBox(height: 10),
+              SizedBox(
+                height: 140,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: Categorydata.length, // Update with your actual category count
+                  itemBuilder: (context, index) => Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Material(
+                      elevation: 0,
+                      borderRadius: BorderRadius.circular(10),
+                      child: Container(
+                        height: 120,
+                        width: 80,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Column(
+                          children: [
+                            Container(
+                              height: 60,
+                              decoration: BoxDecoration(
+                                color: Color.fromARGB(255, 238, 238, 238),
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(10),
+                                  topRight: Radius.circular(10),
+                                ),
+                              ),
+                              child: Center(
+                                child: Icon(Categorydata[index].icon),
+                              ),
+                            ),
+                            Container(
+                              height: 60,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(10),
+                                  bottomRight: Radius.circular(10),
+                                ),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  Categorydata[index].name,
+                                  style: TextStyle(fontSize: 14),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
