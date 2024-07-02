@@ -6,6 +6,8 @@ import 'package:servease/consts/consts.dart';
 import 'package:servease/views/auth/forgot.dart';
 import 'package:servease/views/auth/signup.dart';
 import 'package:servease/views/auth/sign_in.dart';
+import 'package:servease/auth/wrapper.dart';
+import 'package:servease/views/auth/wrapper.dart';
 
 class loginpage extends StatefulWidget {
   const loginpage({super.key});
@@ -15,19 +17,22 @@ class loginpage extends StatefulWidget {
 }
 
 class _loginState extends State<loginpage> {
-
-  TextEditingController email=TextEditingController();
-  TextEditingController passwaord=TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController passwaord = TextEditingController();
 
   signin() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(email: email.text, password: passwaord.text);
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email.text, password: passwaord.text);
+    Get.offAll(mywrapper());
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("login"),),
+      appBar: AppBar(
+        title: Text("login"),
+      ),
       body: Padding(
-
         padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
@@ -39,18 +44,29 @@ class _loginState extends State<loginpage> {
               controller: passwaord,
               decoration: InputDecoration(hintText: 'password'),
             ),
-
-            ElevatedButton(onPressed: (()=>signin()), child: Text('loginFAST')),
-            const SizedBox(height: 30,),
-            ElevatedButton(onPressed: (()=>Get.to(() =>mysignup())), child: Text('register now')),
-            const SizedBox(height: 30,),
-            ElevatedButton(onPressed: (()=>Get.to(() =>forgot())), child: Text('forgot password')),
-            const SizedBox(height: 30,),
-            ElevatedButton(onPressed: (()=>Get.to(() =>google())), child: Text('google')),
+            ElevatedButton(
+                onPressed: (() => signin()), child: Text('loginFAST')),
+            const SizedBox(
+              height: 30,
+            ),
+            ElevatedButton(
+                onPressed: (() => Get.to(() => mysignup())),
+                child: Text('register now')),
+            const SizedBox(
+              height: 30,
+            ),
+            ElevatedButton(
+                onPressed: (() => Get.to(() => forgot())),
+                child: Text('forgot password')),
+            const SizedBox(
+              height: 30,
+            ),
+            ElevatedButton(
+                onPressed: (() => Get.to(() => google())),
+                child: Text('google')),
           ],
         ),
       ),
-
     );
   }
 }
