@@ -1,7 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:servease/consts/consts.dart';
+import 'animated_button.dart';
 
 class OnboardingScreen extends StatefulWidget {
   @override
@@ -29,52 +28,97 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             children: [
               OnboardingPage(
                 containers: [
-                  OnboardingContainer(
+                  AnimatedOnboardingContainer(
                     image: 'assets/images/image1.png',
-                    title: 'Sit.Relax.Chill',
+                    title: '  Sit.Relax.Chill',
                     description: 'Every service on your doorstep',
                     reverseLayout: false,
+                    animationDirection: AxisDirection.right,
                   ),
-                  OnboardingContainer(
+                  AnimatedOnboardingContainer(
                     image: 'assets/images/image2.png',
-                    title: 'Tik.Tok.Ontime',
-                    description: 'Reliable scheduling',
+                    title: '  Tik.Tok.Ontime',
+                    description: '         Reliable scheduling',
                     reverseLayout: true,
+                    animationDirection: AxisDirection.left,
                   ),
-                  OnboardingContainer(
+                  AnimatedOnboardingContainer(
                     image: 'assets/images/image4.png',
                     title: 'Loveit.Bringiton',
                     description: 'Connecting people and things',
                     reverseLayout: false,
+                    animationDirection: AxisDirection.right,
                   ),
-                  OnboardingContainer(
+                  AnimatedOnboardingContainer(
                     image: 'assets/images/image3.png',
-                    title: 'Find.Discover',
-                    description: 'Wide variety of services',
+                    title: '    Find.Discover',
+                    description: '       Wide variety of services',
                     reverseLayout: true,
+                    animationDirection: AxisDirection.left,
                   ),
                 ],
               ),
-              // Add more pages if needed
-            ],
-          ),
-          Stack(children: [
-            Positioned(
-              top: 50,
-              right: 20,
-              child: ElevatedButton(
-                onPressed: () {
-                  // Handle skip action
-                },
-                child: Text('SKIP'),
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
+              // New pages start here
+              Scaffold(
+                body: SafeArea(
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        left: 0,
+                        bottom: 150,
+                        child: Image.asset(
+                          'assets/images/image5.png',
+                          width: 470,
+                          height: 470,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
+              Scaffold(
+                body: SafeArea(
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        left: -137.5,
+                        bottom: 150,
+                        child: Column(
+                          children: [
+                            Image.asset(
+                              'assets/images/image6.png',
+                              width: 435.5,
+                              height: 435.5,
+                            ),
+                          ],
+                        ),
+                      ),
+                      AnimatedButton(
+                        onPressed: () {
+                          // Button action
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
+          Positioned(
+            top: 50,
+            right: 20,
+            child: ElevatedButton(
+              onPressed: () {
+                // Handle skip action
+              },
+              child: Text('SKIP'),
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ),
             ),
-          ]),
+          ),
           Positioned(
             bottom: 30,
             left: 0,
@@ -82,7 +126,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: List.generate(
-                4,
+                3,
                 (index) => AnimatedContainer(
                   duration: Duration(milliseconds: 300),
                   margin: EdgeInsets.symmetric(horizontal: 5),
@@ -103,7 +147,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 }
 
 class OnboardingPage extends StatelessWidget {
-  final List<OnboardingContainer> containers;
+  final List<AnimatedOnboardingContainer> containers;
 
   OnboardingPage({required this.containers});
 
@@ -126,18 +170,39 @@ class OnboardingPage extends StatelessWidget {
   }
 }
 
-class OnboardingContainer extends StatelessWidget {
+class AnimatedOnboardingContainer extends StatefulWidget {
   final String image;
   final String title;
   final String description;
   final bool reverseLayout;
+  final AxisDirection animationDirection;
 
-  OnboardingContainer({
+  AnimatedOnboardingContainer({
     required this.image,
     required this.title,
     required this.description,
     this.reverseLayout = false,
+    required this.animationDirection,
   });
+
+  @override
+  _AnimatedOnboardingContainerState createState() =>
+      _AnimatedOnboardingContainerState();
+}
+
+class _AnimatedOnboardingContainerState
+    extends State<AnimatedOnboardingContainer> {
+  bool _isVisible = false;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      setState(() {
+        _isVisible = true;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -155,64 +220,96 @@ class OnboardingContainer extends StatelessWidget {
       ),
       padding: EdgeInsets.all(20),
       child: Row(
-        children: reverseLayout
+        children: widget.reverseLayout
             ? [
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        title,
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
+                      AnimatedSlide(
+                        offset: _isVisible
+                            ? Offset(0, 0)
+                            : widget.animationDirection == AxisDirection.right
+                                ? Offset(-1, 0)
+                                : Offset(1, 0),
+                        duration: Duration(seconds: 1),
+                        child: Text(
+                          widget.title,
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                       SizedBox(height: 4),
-                      Text(
-                        description,
-                        style: TextStyle(
-                          fontSize: 13,
+                      AnimatedSlide(
+                        offset: _isVisible
+                            ? Offset(0, 0)
+                            : widget.animationDirection == AxisDirection.right
+                                ? Offset(-1, 0)
+                                : Offset(1, 0),
+                        duration: Duration(seconds: 1),
+                        child: Text(
+                          widget.description,
+                          style: TextStyle(
+                            fontSize: 13,
+                          ),
+                          textAlign: TextAlign.left,
                         ),
-                        textAlign: TextAlign.left,
                       ),
                     ],
                   ),
                 ),
-                SizedBox(width: 10), // Adjust this value to control the gap
+                SizedBox(width: 10),
                 Image.asset(
-                  image,
-                  height: 115, // Increased height
-                  width: 115, // Increased width
-                  fit: BoxFit.cover, // Ensure the image covers the space
+                  widget.image,
+                  height: 115,
+                  width: 115,
+                  fit: BoxFit.cover,
                 ),
               ]
             : [
                 Image.asset(
-                  image,
-                  height: 115, // Increased height
-                  width: 115, // Increased width
-                  fit: BoxFit.cover, // Ensure the image covers the space
+                  widget.image,
+                  height: 115,
+                  width: 115,
+                  fit: BoxFit.cover,
                 ),
-                SizedBox(width: 10), // Adjust this value to control the gap
+                SizedBox(width: 10),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        title,
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
+                      AnimatedSlide(
+                        offset: _isVisible
+                            ? Offset(0, 0)
+                            : widget.animationDirection == AxisDirection.right
+                                ? Offset(-1, 0)
+                                : Offset(1, 0),
+                        duration: Duration(seconds: 1),
+                        child: Text(
+                          widget.title,
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                       SizedBox(height: 4),
-                      Text(
-                        description,
-                        style: TextStyle(
-                          fontSize: 13,
+                      AnimatedSlide(
+                        offset: _isVisible
+                            ? Offset(0, 0)
+                            : widget.animationDirection == AxisDirection.right
+                                ? Offset(-1, 0)
+                                : Offset(1, 0),
+                        duration: Duration(seconds: 1),
+                        child: Text(
+                          widget.description,
+                          style: TextStyle(
+                            fontSize: 13,
+                          ),
+                          textAlign: TextAlign.left,
                         ),
-                        textAlign: TextAlign.left,
                       ),
                     ],
                   ),
