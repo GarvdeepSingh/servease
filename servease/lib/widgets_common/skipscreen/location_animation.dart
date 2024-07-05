@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:servease/views/home/get_lat_long.dart';
-import 'package:geocoding/geocoding.dart';
-import 'package:geolocator/geolocator.dart';
 
 class AnimatedHomePage extends StatefulWidget {
   @override
@@ -20,7 +18,9 @@ class _AnimatedHomePageState extends State<AnimatedHomePage> {
   double _buttonOpacity = 1.0;
   double _buttonBottomPosition =
       800; // Initial position of the button (off-screen)
+  // ignore: unused_field
   double _buttonLeftPosition = 0;
+  // ignore: unused_field
   double _buttonRightPosition = 0;
 
   @override

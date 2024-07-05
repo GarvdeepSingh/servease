@@ -5,6 +5,7 @@ import 'package:servease/consts/consts.dart';
 import 'dart:ffi';
 import 'package:get/get.dart';
 import 'package:servease/views/auth/auth_1.dart';
+// ignore: unused_import
 import 'package:servease/views/skip/skip_screen1.dart';
 // ignore: unused_import
 import 'package:velocity_x/velocity_x.dart';
@@ -35,7 +36,8 @@ class splashscreenState extends State<splashscreen> {
       body: Center(
         child: RichText(
           text: const TextSpan(
-            style: const TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontSize: 60),
+            style: const TextStyle(
+                color: Color.fromARGB(255, 0, 0, 0), fontSize: 60),
             children: [
               TextSpan(
                 text: 'SERV',

@@ -6,6 +6,7 @@ import 'package:servease/views/auth/login.dart';
 import 'package:servease/views/home/get_lat_long.dart';
 // ignore: unused_import
 import 'package:servease/views/home/home.dart';
+import 'package:servease/widgets_common/skipscreen/slider_screen1.dart';
 
 class mywrapper extends StatefulWidget {
   const mywrapper({super.key});
@@ -18,13 +19,15 @@ class _mywrapperState extends State<mywrapper> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: StreamBuilder(stream: FirebaseAuth.instance.authStateChanges(), builder: ((context, snapshot) {
-        if(snapshot.hasData){
-          return GetLatLongScreen();
-        }else{
-          return loginpage();
-        }
-      })),
+      body: StreamBuilder(
+          stream: FirebaseAuth.instance.authStateChanges(),
+          builder: ((context, snapshot) {
+            if (snapshot.hasData) {
+              return OnboardingScreen();
+            } else {
+              return loginpage();
+            }
+          })),
     );
   }
 }

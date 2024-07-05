@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
       title: 'servease',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),
-      home: OnboardingScreen(),
+      home: splashscreen(),
     );
   }
 }

@@ -6,6 +6,7 @@ import 'package:servease/consts/consts.dart';
 import 'package:servease/views/auth/forgot.dart';
 import 'package:servease/views/auth/signup.dart';
 import 'package:servease/views/auth/sign_in.dart';
+// ignore: unused_import
 import 'package:servease/auth/wrapper.dart';
 import 'package:servease/views/auth/wrapper.dart';
 
@@ -61,9 +62,9 @@ class _loginState extends State<loginpage> {
             const SizedBox(
               height: 30,
             ),
-            ElevatedButton(
-                onPressed: (() => Get.to(() => google())),
-                child: Text('google')),
+            // ElevatedButton(
+            //     onPressed: (() => Get.to(() => google())),
+            //     child: Text('google')),
           ],
         ),
       ),

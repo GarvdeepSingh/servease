@@ -19,6 +19,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Stack(
         children: [
           PageView(
@@ -59,6 +60,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
               // New pages start here
               Scaffold(
+                backgroundColor: Colors.white,
                 body: SafeArea(
                   child: Stack(
                     children: [
