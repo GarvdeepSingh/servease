@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:servease/consts/consts.dart';
-import 'animated_button.dart';
+import 'location_animation.dart';
 
 class OnboardingScreen extends StatefulWidget {
   @override
@@ -80,24 +79,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 body: SafeArea(
                   child: Stack(
                     children: [
-                      Positioned(
-                        left: -137.5,
-                        bottom: 150,
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              'assets/images/image6.png',
-                              width: 435.5,
-                              height: 435.5,
-                            ),
-                          ],
-                        ),
-                      ),
-                      AnimatedButton(
-                        onPressed: () {
-                          // Button action
-                        },
-                      ),
+                      AnimatedHomePage(), // Replace the specified part with AnimatedHomePage
                     ],
                   ),
                 ),
@@ -315,6 +297,27 @@ class _AnimatedOnboardingContainerState
                   ),
                 ),
               ],
+      ),
+    );
+  }
+}
+
+class NextPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Next Page'),
+      ),
+      body: Center(
+        child: Text(
+          'Welcome to the next page!',
+          style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'MyCustomFont', // Use your custom font
+          ),
+        ),
       ),
     );
   }

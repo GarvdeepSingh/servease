@@ -82,6 +82,8 @@ flutter:
     - assets/images/image4.png
     - assets/images/image5.png
     - assets/images/image6.png
+    - assets/images/Location.png
+    - assets/images/Map.png
 
     
     # - images/a_dot_ham.jpeg
