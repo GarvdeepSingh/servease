@@ -52,31 +52,66 @@ class _authState extends State<auth> {
             child: screenwidget1(),
           ),
           const SizedBox(
-            height: 50,
+            height: 80,
           ),
           OutlinedButton(
             onPressed: (() => Get.to(() => loginpage())),
             child: Text('Continue to Login / Signup'),
             style: OutlinedButton.styleFrom(
               minimumSize: Size(280, 60),
-              textStyle: TextStyle(fontSize: 20),
+              textStyle: TextStyle(
+                fontSize: 16,
+                fontFamily: 'pro-bold',
+              ),
               side: BorderSide(
                   width: 2, color: Color.fromARGB(255, 250, 198, 48)),
+              foregroundColor: Color.fromARGB(255, 250, 198, 48),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
             ),
           ),
           const SizedBox(
-            height: 50,
+            height: 20,
           ),
           OutlinedButton(
-              onPressed: (() => Get.to(() => google())),
-              child: Text('Continue with Google'),
-              style: OutlinedButton.styleFrom(
-                minimumSize: Size(280, 60),
-                textStyle: TextStyle(fontSize: 20),
-                side: BorderSide(
-                    width: 2, color: Color.fromARGB(255, 250, 198, 48)),
-                backgroundColor: Color.fromARGB(255, 255, 255, 255),
-              ))
+            onPressed: (() => Get.to(() => google())),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  'assets/images/google.png',
+                  width: 24,
+                  height: 24,
+                  fit: BoxFit.contain,
+                ),
+                SizedBox(width: 8),
+                Text(
+                  'Continue with Google',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontFamily: 'pro-bold',
+                  ),
+                ),
+              ],
+            ),
+            style: OutlinedButton.styleFrom(
+              minimumSize: Size(280,
+                  60), // Adjust height here for desired size (increased from 50)
+              maximumSize:
+                  Size(280, 60), // Set the same value for a fixed height
+              side: BorderSide(
+                width: 2,
+                color: Color.fromARGB(255, 250, 198, 48),
+              ),
+              backgroundColor:
+                  Colors.white, // Assuming you want white background
+              foregroundColor: Colors.black,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
+            ),
+          )
         ]));
   }
 }
