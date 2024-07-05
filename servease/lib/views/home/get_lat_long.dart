@@ -130,7 +130,8 @@ class _GetLatLongScreenState extends State<GetLatLongScreen> {
                 height: 140,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: Categorydata.length, // Update with your actual category count
+                  itemCount: Categorydata
+                      .length, // Update with your actual category count
                   itemBuilder: (context, index) => Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Material(
@@ -182,20 +183,22 @@ class _GetLatLongScreenState extends State<GetLatLongScreen> {
                   ),
                 ),
               ),
-              SizedBox(child: 
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Grabe Deal",
-                  style: TextStyle(fontSize: 20),
+              SizedBox(
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Grabe Deal",
+                    style: TextStyle(fontSize: 20),
+                  ),
                 ),
-              ),),
+              ),
               SizedBox(height: 20), // Space between category sliders
               SizedBox(
                 height: 140,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: Categorydata.length, // Update with your actual category count
+                  itemCount: Categorydata
+                      .length, // Update with your actual category count
                   itemBuilder: (context, index) => Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Material(
@@ -228,7 +231,6 @@ class _GetLatLongScreenState extends State<GetLatLongScreen> {
                               height: 30,
                               decoration: BoxDecoration(
                                 color: Colors.white,
-
                                 borderRadius: BorderRadius.only(
                                   bottomLeft: Radius.circular(10),
                                   bottomRight: Radius.circular(10),
@@ -236,7 +238,6 @@ class _GetLatLongScreenState extends State<GetLatLongScreen> {
                               ),
                               child: Center(
                                 child: Text(
-                                  
                                   Categorydata[index].name,
                                   style: TextStyle(fontSize: 14),
                                 ),
