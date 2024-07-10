@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:servease/consts/consts.dart';
 import 'package:servease/views/auth/login.dart';
@@ -7,7 +5,6 @@ import 'package:servease/views/auth/login.dart';
 import 'package:servease/views/auth/signup.dart';
 import 'package:servease/views/auth/sign_in.dart';
 import 'package:servease/widgets_common/skipscreen/screen1.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 class auth extends StatefulWidget {
   const auth({super.key});

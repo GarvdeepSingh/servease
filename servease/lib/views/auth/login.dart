@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:servease/consts/consts.dart';
 import 'package:servease/views/auth/forgot.dart';
 import 'package:servease/views/auth/signup.dart';
-import 'package:servease/views/auth/sign_in.dart';
 // ignore: unused_import
 import 'package:servease/auth/wrapper.dart';
 import 'package:servease/views/auth/wrapper.dart';

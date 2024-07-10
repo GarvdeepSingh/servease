@@ -16,7 +16,6 @@ import 'package:servease/views/skip/skip_screen.dart';
 import 'package:servease/views/skip/skip_screen1.dart';
 // ignore: unused_import
 import 'package:servease/views/splash_screen/splash_screen.dart';
-import 'package:servease/widgets_common/skipscreen/slider_screen1.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -44,7 +43,7 @@ class MyApp extends StatelessWidget {
       title: 'servease',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),
-      home: splashscreen(),
+      home: GetLatLongScreen(),
     );
   }
 }
