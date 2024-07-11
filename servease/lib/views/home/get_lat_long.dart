@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:servease/widgets_common/cat_mod.dart'; // Assuming you have this import for category data
+import 'package:servease/widgets_common/profile.dart';
+ // Import the profile screen
 
 class GetLatLongScreen extends StatefulWidget {
   const GetLatLongScreen({Key? key}) : super(key: key);
@@ -14,6 +16,7 @@ class _GetLatLongScreenState extends State<GetLatLongScreen> {
   String address = "Fetching location...";
   String error = "";
   int _selectedIndex = 1; // Default to home screen
+  TextEditingController nameController = TextEditingController();
 
   @override
   void initState() {
@@ -145,7 +148,7 @@ class _GetLatLongScreenState extends State<GetLatLongScreen> {
           children: [
             buildCategoriesScreen(),
             buildHomeScreen(),
-            buildProfileScreen(),
+            ProfileScreen(nameController: nameController), // Use the ProfileScreen widget here
           ],
         ),
       ),
@@ -188,8 +191,7 @@ class _GetLatLongScreenState extends State<GetLatLongScreen> {
             height: 140,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: Categorydata
-                  .length, // Update with your actual category count
+              itemCount: Categorydata.length, // Update with your actual category count
               itemBuilder: (context, index) => Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Material(
@@ -255,8 +257,7 @@ class _GetLatLongScreenState extends State<GetLatLongScreen> {
             height: 140,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: Categorydata
-                  .length, // Update with your actual category count
+              itemCount: Categorydata.length, // Update with your actual category count
               itemBuilder: (context, index) => Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Material(
@@ -316,10 +317,5 @@ class _GetLatLongScreenState extends State<GetLatLongScreen> {
   Widget buildCategoriesScreen() {
     // Build your categories screen here
     return Center(child: Text('Categories Screen'));
-  }
-
-  Widget buildProfileScreen() {
-    // Build your profile screen here
-    return Center(child: Text('Profile Screen'));
   }
 }
