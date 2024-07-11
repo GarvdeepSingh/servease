@@ -5,8 +5,6 @@ import 'package:get/get.dart';
 import 'package:servease/consts/consts.dart';
 import 'package:servease/views/auth/forgot.dart';
 import 'package:servease/views/auth/signup.dart';
-// ignore: unused_import
-import 'package:servease/auth/wrapper.dart';
 import 'package:servease/views/auth/wrapper.dart';
 
 class loginpage extends StatefulWidget {

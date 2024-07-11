@@ -81,7 +81,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 body: SafeArea(
                   child: Stack(
                     children: [
-                      AnimatedHomePage(),
+                      AnimatedHomePage(), // Replace the specified part with AnimatedHomePage
                     ],
                   ),
                 ),
