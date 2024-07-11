@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
       title: 'servease',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),
-      home: GetLatLongScreen(),
+      home: SplashScreen(),
     );
   }
 }
