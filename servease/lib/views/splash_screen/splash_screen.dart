@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
-import 'package:flutter/material.dart';
->>>>>>> parent of d846b4b (ui)
+
 // import 'package:servease/consts/colors.dart';
 import 'package:servease/consts/consts.dart';
 // ignore: unused_import
