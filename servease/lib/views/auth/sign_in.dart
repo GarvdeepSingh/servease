@@ -1,5 +1,8 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 99888aa (Merge branch 'main' of https://github.com/GarvdeepSingh/servease)
 // import 'package:firebase_auth/firebase_auth.dart';
 // // ignore: unused_import
 // import 'package:flutter/foundation.dart';
@@ -40,7 +43,10 @@
 //   }
 // }
 
+<<<<<<< HEAD
 >>>>>>> parent of d846b4b (ui)
+=======
+>>>>>>> parent of 99888aa (Merge branch 'main' of https://github.com/GarvdeepSingh/servease)
 import 'package:firebase_auth/firebase_auth.dart';
 // ignore: unused_import
 import 'package:flutter/foundation.dart';
