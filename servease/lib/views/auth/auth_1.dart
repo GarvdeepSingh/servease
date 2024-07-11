@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:servease/consts/consts.dart';
 import 'package:servease/views/auth/login.dart';
-// ignore: unused_import
-import 'package:servease/views/auth/signup.dart';
 import 'package:servease/views/auth/sign_in.dart';
 import 'package:servease/widgets_common/skipscreen/screen1.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -20,62 +17,61 @@ class _authState extends State<auth> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromARGB(255, 0, 0, 0),
-        body: Column(children: [
-          100.heightBox,
+      backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+      body: Column(
+        children: [
+          90.heightBox,
           Center(
             child: RichText(
               text: const TextSpan(
-                style: const TextStyle(
+                style: TextStyle(
                     color: Color.fromARGB(255, 250, 198, 44), fontSize: 60),
                 children: [
                   TextSpan(
                     text: 'SERV',
                     style: TextStyle(
-                        fontFamily: 'assets/fomts/jom.ttf',
-                        fontWeight: FontWeight.bold,
-                        color: whiteColor),
+                        fontFamily: 'jom', fontSize: 100, color: whiteColor),
                   ),
                   TextSpan(
                     text: 'ease',
                     style: TextStyle(
-                        fontFamily: 'assets/fomts/jom.ttf',
-                        fontWeight: FontWeight.bold),
+                      fontFamily: 'jom',
+                      fontSize: 100,
+                    ),
                   ),
                 ],
               ),
             ),
           ),
-          20.heightBox,
           Align(
             alignment: Alignment.center,
             child: screenwidget1(),
           ),
           const SizedBox(
-            height: 80,
+            height: 90,
           ),
           OutlinedButton(
-            onPressed: (() => Get.to(() => loginpage())),
-            child: Text('Continue to Login / Signup'),
+            onPressed: () => Get.to(() => loginpage()),
+            child: const Text('Continue to Login / Signup'),
             style: OutlinedButton.styleFrom(
-              minimumSize: Size(280, 60),
-              textStyle: TextStyle(
+              minimumSize: const Size(280, 60),
+              textStyle: const TextStyle(
                 fontSize: 16,
                 fontFamily: 'pro-bold',
               ),
-              side: BorderSide(
+              side: const BorderSide(
                   width: 2, color: Color.fromARGB(255, 250, 198, 48)),
-              foregroundColor: Color.fromARGB(255, 250, 198, 48),
+              foregroundColor: const Color.fromARGB(255, 250, 198, 48),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16),
               ),
             ),
           ),
           const SizedBox(
-            height: 20,
+            height: 10,
           ),
           OutlinedButton(
-            onPressed: (() => Get.to(() => google())),
+            onPressed: () => Get.to(() => google()),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -85,8 +81,8 @@ class _authState extends State<auth> {
                   height: 24,
                   fit: BoxFit.contain,
                 ),
-                SizedBox(width: 8),
-                Text(
+                const SizedBox(width: 8),
+                const Text(
                   'Continue with Google',
                   style: TextStyle(
                     fontSize: 16,
@@ -96,22 +92,36 @@ class _authState extends State<auth> {
               ],
             ),
             style: OutlinedButton.styleFrom(
-              minimumSize: Size(280,
-                  60), // Adjust height here for desired size (increased from 50)
-              maximumSize:
-                  Size(280, 60), // Set the same value for a fixed height
-              side: BorderSide(
+              minimumSize: const Size(280, 60),
+              maximumSize: const Size(280, 60),
+              side: const BorderSide(
                 width: 2,
-                color: Color.fromARGB(255, 250, 198, 48),
+                color: Color.fromARGB(255, 255, 255, 255),
               ),
-              backgroundColor:
-                  Colors.white, // Assuming you want white background
+              backgroundColor: Colors.white,
               foregroundColor: Colors.black,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16),
               ),
             ),
-          )
-        ]));
+          ),
+          const SizedBox(
+            height: 3,
+          ),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Text(
+              'By continuing you agree to Servease Terms and Conditions.',
+              style: TextStyle(
+                fontSize: 10,
+                color: Colors.white,
+                fontFamily: 'pro-regular',
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

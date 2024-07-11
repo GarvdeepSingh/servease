@@ -1,59 +1,170 @@
+// import 'package:flutter/material.dart';
+// import 'package:get/get.dart';
+// import 'package:servease/views/auth/auth_1.dart';
+
+// class SplashScreen extends StatefulWidget {
+//   const SplashScreen({super.key});
+
+//   @override
+//   State<SplashScreen> createState() => _SplashScreenState();
+// }
+
+// class _SplashScreenState extends State<SplashScreen>
+//     with TickerProviderStateMixin {
+//   late AnimationController _controller;
+//   late Animation<Offset> _slideAnimation;
+
+//   @override
+//   void initState() {
+//     super.initState();
+//     _controller = AnimationController(
+//       duration: const Duration(seconds: 1),
+//       vsync: this,
+//     );
+
+//     _slideAnimation =
+//         Tween<Offset>(begin: Offset(1, 0), end: Offset(0, 0)).animate(
+//       CurvedAnimation(
+//         parent: _controller,
+//         curve: Curves.easeInOut,
+//       ),
+//     );
+
+//     _controller.forward();
+
+//     Future.delayed(const Duration(seconds: 3), () {
+//       Get.to(() => const auth());
+//     });
+//   }
+
+//   @override
+//   void dispose() {
+//     _controller.dispose();
+//     super.dispose();
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       backgroundColor: const Color.fromARGB(255, 250, 198, 44),
+//       body: Center(
+//         child: Stack(
+//           alignment: Alignment.center,
+//           children: [
+//             Row(
+//               mainAxisSize: MainAxisSize.min,
+//               children: [
+//                 ClipRect(
+//                   child: SlideTransition(
+//                     position: _slideAnimation,
+//                     child: Text(
+//                       'SERV',
+//                       style: const TextStyle(
+//                         fontFamily: 'jom',
+//                         fontSize: 115,
+//                         color: Colors.white,
+//                       ),
+//                     ),
+//                   ),
+//                 ),
+//                 const Text(
+//                   'ease',
+//                   style: TextStyle(
+//                     fontFamily: 'jom',
+//                     fontSize: 115,
+//                     color: Colors.black,
+//                   ),
+//                 ),
+//               ],
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+
 import 'package:flutter/material.dart';
-// import 'package:servease/consts/colors.dart';
-import 'package:servease/consts/consts.dart';
-// ignore: unused_import
-import 'dart:ffi';
 import 'package:get/get.dart';
 import 'package:servease/views/auth/auth_1.dart';
-// ignore: unused_import
-import 'package:servease/views/skip/skip_screen1.dart';
-// ignore: unused_import
-import 'package:velocity_x/velocity_x.dart';
 
-class splashscreen extends StatefulWidget {
-  const splashscreen({super.key});
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
 
   @override
-  State<splashscreen> createState() => splashscreenState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class splashscreenState extends State<splashscreen> {
-  changescreen() {
+class _SplashScreenState extends State<SplashScreen>
+    with TickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<Offset> _slideAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(seconds: 1),
+      vsync: this,
+    );
+
+    _slideAnimation =
+        Tween<Offset>(begin: Offset(1, 0), end: Offset(0, 0)).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.easeInOut,
+      ),
+    );
+
+    _controller.forward();
+
     Future.delayed(const Duration(seconds: 3), () {
-      Get.to(() => const auth());
+      Get.to(() => const auth(),
+          transition: Transition.fadeIn, duration: Duration(seconds: 1));
     });
   }
 
-  void initState() {
-    super.initState();
-    changescreen();
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 250, 198, 44),
+      backgroundColor: const Color.fromARGB(255, 250, 198, 44),
       body: Center(
-        child: RichText(
-          text: const TextSpan(
-            style: const TextStyle(
-                color: Color.fromARGB(255, 0, 0, 0), fontSize: 60),
-            children: [
-              TextSpan(
-                text: 'SERV',
-                style: TextStyle(
-                    fontFamily: 'assets/fomts/jom.ttf',
-                    fontWeight: FontWeight.bold,
-                    color: whiteColor),
-              ),
-              TextSpan(
-                text: 'ease',
-                style: TextStyle(
-                    fontFamily: 'assets/fomts/jom.ttf',
-                    fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ClipRect(
+                  child: SlideTransition(
+                    position: _slideAnimation,
+                    child: Text(
+                      'SERV',
+                      style: const TextStyle(
+                        fontFamily: 'jom',
+                        fontSize: 115,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+                const Text(
+                  'ease',
+                  style: TextStyle(
+                    fontFamily: 'jom',
+                    fontSize: 115,
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
