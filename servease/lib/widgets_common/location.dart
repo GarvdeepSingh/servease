@@ -41,8 +41,11 @@ class LocationService {
   }
 
   Future<String> getCollectionBasedOnLocation(double lat, double long) async {
-    // Implement your logic to determine the collection name based on lat and long
-    // For now, return a dummy collection name
-    return 'tilak nagar'; // Example collection name
+    try {
+      List<Placemark> placemarks = await placemarkFromCoordinates(lat, long);
+      return placemarks.isNotEmpty ? placemarks[0].locality ?? "Unknown" : "Unknown";
+    } catch (e) {
+      return "Error: ${e.toString()}";
+    }
   }
 }

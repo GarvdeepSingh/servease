@@ -14,6 +14,7 @@ class _ElecState extends State<Elec> {
   Stream<QuerySnapshot>? _userStream;
   final LocationService locationService = LocationService();
   String error = "";
+  late String collection;
 
   @override
   void initState() {
@@ -24,7 +25,7 @@ class _ElecState extends State<Elec> {
   void _getUserStream() async {
     try {
       Position position = await locationService.determinePosition();
-      String collection = await locationService.getCollectionBasedOnLocation(
+      collection = await locationService.getCollectionBasedOnLocation(
           position.latitude, position.longitude);
 
       setState(() {
