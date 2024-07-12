@@ -11,6 +11,7 @@ class Elec extends StatefulWidget {
 }
 
 class _ElecState extends State<Elec> {
+  String address = "";
   Stream<QuerySnapshot>? _userStream;
   final LocationService locationService = LocationService();
   String error = "";
@@ -24,15 +25,18 @@ class _ElecState extends State<Elec> {
 
   void _getUserStream() async {
     try {
+      // Get the user's position
       Position position = await locationService.determinePosition();
-      collection = await locationService.getCollectionBasedOnLocation(
+      // Get the locality based on the user's position
+      address = await locationService.getCollectionBasedOnLocation(
           position.latitude, position.longitude);
 
       setState(() {
+        // Use the locality as the collection name
         _userStream = FirebaseFirestore.instance
-            .collection(collection)
-            .doc('2')
-            .collection('plum')
+            .collection(address)
+            .doc('1')
+            .collection('elec')
             .snapshots();
       });
     } catch (e) {
