@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:servease/consts/consts.dart';
+import 'package:servease/views/home/get_lat_long.dart';
 import 'location_animation.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -92,11 +95,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             top: 50,
             right: 20,
             child: ElevatedButton(
-              onPressed: () {
-                // Handle skip action
-              },
-              child: Text('SKIP'),
+              onPressed: () => Get.to(() => GetLatLongScreen()),
+              child: Text(
+                'SKIP',
+                style: TextStyle(
+                  fontFamily: 'jom',
+                  fontSize: 26,
+                  color: Vx.black,
+                ),
+              ),
               style: ElevatedButton.styleFrom(
+                backgroundColor: Color.fromARGB(255, 218, 218, 218),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),

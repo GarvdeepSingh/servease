@@ -41,10 +41,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'servease',
+      title: 'Servease',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),
-      home: splashScreen(),
+      home: GetLatLongScreen(),
     );
   }
 }
