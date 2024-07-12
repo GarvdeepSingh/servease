@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+// ignore: unused_import
 import 'package:servease/category/elec.dart';
 // ignore: unused_import
 import 'package:servease/views/auth/auth_1.dart';
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
       title: 'servease',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),
-      home: splashScreen(),
+      home: Elec(),
     );
   }
 }

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:geocoding/geocoding.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:servease/widgets_common/cat_mod.dart'; // Assuming you have this import for category data
-import 'package:servease/widgets_common/profile.dart';
- // Import the profile screen
+import 'package:servease/widgets_common/profile.dart'; // Import the profile screen
+import 'package:servease/widgets_common/location.dart'; // Import the location service
 
 class GetLatLongScreen extends StatefulWidget {
   const GetLatLongScreen({Key? key}) : super(key: key);
@@ -18,62 +16,26 @@ class _GetLatLongScreenState extends State<GetLatLongScreen> {
   int _selectedIndex = 1; // Default to home screen
   TextEditingController nameController = TextEditingController();
 
+  final LocationService locationService = LocationService();
+
   @override
   void initState() {
     super.initState();
     getLatLong();
   }
 
-  Future<Position> _determinePosition() async {
-    bool serviceEnabled;
-    LocationPermission permission;
-
-    // Test if location services are enabled.
-    serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) {
-      return Future.error('Location services are disabled.');
-    }
-
-    permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.denied) {
-        return Future.error('Location permissions are denied');
-      }
-    }
-
-    if (permission == LocationPermission.deniedForever) {
-      return Future.error(
-          'Location permissions are permanently denied, we cannot request permissions.');
-    }
-
-    return await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high);
-  }
-
   void getLatLong() {
-    _determinePosition().then((value) {
-      getAddress(value.latitude, value.longitude);
+    locationService.determinePosition().then((position) {
+      locationService.getAddress(position.latitude, position.longitude).then((addr) {
+        setState(() {
+          address = addr;
+        });
+      });
     }).catchError((error) {
       setState(() {
         this.error = error.toString();
       });
     });
-  }
-
-  void getAddress(double lat, double long) async {
-    try {
-      List<Placemark> placemarks = await placemarkFromCoordinates(lat, long);
-      setState(() {
-        address = placemarks.isNotEmpty
-            ? "${placemarks[0].subLocality}, ${placemarks[0].locality}"
-            : "Unknown location";
-      });
-    } catch (e) {
-      setState(() {
-        error = e.toString();
-      });
-    }
   }
 
   void _onItemTapped(int index) {
