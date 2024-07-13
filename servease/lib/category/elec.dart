@@ -11,7 +11,7 @@ class Elec extends StatefulWidget {
 }
 
 class _ElecState extends State<Elec> {
-  String address="";
+  String address = "Vishnu Gadern";
   Stream<QuerySnapshot>? _userStream;
   final LocationService locationService = LocationService();
   String error = "";
@@ -23,9 +23,11 @@ class _ElecState extends State<Elec> {
     _getUserStream();
   }
 
-    void getLatLong() {
+  void getLatLong() {
     locationService.determinePosition().then((position) {
-      locationService.getAddress(position.latitude, position.longitude).then((addr) {
+      locationService
+          .getAddress(position.latitude, position.longitude)
+          .then((addr) {
         setState(() {
           address = addr;
         });
@@ -40,7 +42,7 @@ class _ElecState extends State<Elec> {
   void _getUserStream() async {
     try {
       Position position = await locationService.determinePosition();
-       collection = await locationService.getCollectionBasedOnLocation(
+      collection = await locationService.getCollectionBasedOnLocation(
           position.latitude, position.longitude);
 
       setState(() {
