@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:servease/widgets_common/cat_mod.dart'; // Assuming you have this import for category data
 import 'package:servease/widgets_common/profile.dart'; // Import the profile screen
@@ -28,7 +27,7 @@ class _GetLatLongScreenState extends State<GetLatLongScreen> {
   void getLatLong() {
     locationService.determinePosition().then((position) {
       locationService
-          .getAddress(position.latitude, position.longitude)
+          .getLocality(position.latitude, position.longitude)
           .then((addr) {
         setState(() {
           address = addr;
