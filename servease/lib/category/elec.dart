@@ -1,17 +1,17 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:servease/widgets_common/location.dart'; // Import the location service
 
 class Elec extends StatefulWidget {
-  const Elec({super.key});
+  const Elec({Key? key}) : super(key: key);
 
   @override
   State<Elec> createState() => _ElecState();
 }
 
 class _ElecState extends State<Elec> {
-  String address = "Vishnu Gadern";
+  String address = "Vishnu Garden"; // Default address
   Stream<QuerySnapshot>? _userStream;
   final LocationService locationService = LocationService();
   String error = "";
@@ -20,16 +20,19 @@ class _ElecState extends State<Elec> {
   @override
   void initState() {
     super.initState();
-    _getUserStream();
+    getLatLong(); // Fetch location on init
   }
 
   void getLatLong() {
     locationService.determinePosition().then((position) {
-      locationService
-          .getAddress(position.latitude, position.longitude)
-          .then((addr) {
+      locationService.getAddress(position.latitude, position.longitude).then((addr) {
         setState(() {
-          address = addr;
+          address = addr; // Update address variable
+          _getUserStream(); // Fetch Firestore data based on updated address
+        });
+      }).catchError((error) {
+        setState(() {
+          this.error = error.toString();
         });
       });
     }).catchError((error) {
@@ -42,12 +45,11 @@ class _ElecState extends State<Elec> {
   void _getUserStream() async {
     try {
       Position position = await locationService.determinePosition();
-      collection = await locationService.getCollectionBasedOnLocation(
-          position.latitude, position.longitude);
+      collection = await locationService.getCollectionBasedOnLocation(position.latitude, position.longitude);
 
       setState(() {
         _userStream = FirebaseFirestore.instance
-            .collection(address)
+            .collection(address) // Use updated address here
             .doc('1')
             .collection('elec')
             .snapshots();
@@ -63,7 +65,7 @@ class _ElecState extends State<Elec> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("elec"),
+        title: Text("Elec"),
       ),
       body: error.isNotEmpty
           ? Center(child: Text('Error: $error'))
