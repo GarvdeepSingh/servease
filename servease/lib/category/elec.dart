@@ -32,12 +32,12 @@ class _ElecState extends State<Elec> {
         });
       }).catchError((error) {
         setState(() {
-          this.error = error.toString();
+          this.error = "Error getting address: $error";
         });
       });
     }).catchError((error) {
       setState(() {
-        this.error = error.toString();
+        this.error = "Error determining position: $error";
       });
     });
   }
@@ -56,7 +56,7 @@ class _ElecState extends State<Elec> {
       });
     } catch (e) {
       setState(() {
-        error = e.toString();
+        error = "Error fetching Firestore data: $e";
       });
     }
   }
