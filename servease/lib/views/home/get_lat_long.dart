@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:servease/widgets_common/cat_mod.dart'; // Assuming you have this import for category data
 import 'package:servease/widgets_common/profile.dart'; // Import the profile screen
 import 'package:servease/widgets_common/location.dart'; // Import the location service
+import 'package:servease/category/elec.dart'; // Import the Elec page
 
 class GetLatLongScreen extends StatefulWidget {
   const GetLatLongScreen({Key? key}) : super(key: key);
@@ -44,6 +45,19 @@ class _GetLatLongScreenState extends State<GetLatLongScreen> {
     setState(() {
       _selectedIndex = index;
     });
+  }
+
+  void _onCategoryTapped(String categoryName) {
+    // Handle category tap
+    print('Category tapped: $categoryName');
+    if (categoryName == 'Electrician') {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Elec()),
+      );
+    } else {
+      // Handle other categories if needed
+    }
   }
 
   @override
@@ -237,41 +251,44 @@ class _GetLatLongScreenState extends State<GetLatLongScreen> {
                   child: Material(
                     elevation: 0,
                     borderRadius: BorderRadius.circular(10),
-                    child: Container(
-                      height: 80,
-                      width: 64,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Color.fromARGB(255, 255, 255, 255),
-                      ),
-                      child: Column(
-                        children: [
-                          Container(
-                            height: 55,
-                            width: 64,
-                            decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 238, 238, 238),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Center(
-                              child: Icon(Categorydata[index].icon),
-                            ),
-                          ),
-                          Container(
-                            height: 30,
-                            width: 64,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Center(
-                              child: Text(
-                                Categorydata[index].name,
-                                style: TextStyle(fontSize: 12),
+                    child: GestureDetector(
+                      onTap: () => _onCategoryTapped(Categorydata[index].name),
+                      child: Container(
+                        height: 80,
+                        width: 64,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Color.fromARGB(255, 255, 255, 255),
+                        ),
+                        child: Column(
+                          children: [
+                            Container(
+                              height: 55,
+                              width: 64,
+                              decoration: BoxDecoration(
+                                color: Color.fromARGB(255, 238, 238, 238),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Center(
+                                child: Icon(Categorydata[index].icon),
                               ),
                             ),
-                          ),
-                        ],
+                            Container(
+                              height: 30,
+                              width: 64,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  Categorydata[index].name,
+                                  style: TextStyle(fontSize: 12),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
