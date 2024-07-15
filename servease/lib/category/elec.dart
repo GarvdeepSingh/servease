@@ -1,6 +1,8 @@
 // import 'package:flutter/material.dart';
 // import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:geolocator/geolocator.dart';
+// import 'package:servease/consts/consts.dart';
+// import 'package:servease/views/home/get_lat_long.dart';
 // import 'package:servease/widgets_common/location.dart'; // Ensure the path is correct
 
 // class Elec extends StatefulWidget {
@@ -15,6 +17,7 @@
 //   Stream<QuerySnapshot>? _userStream;
 //   final LocationService locationService = LocationService();
 //   String error = "";
+//   TextEditingController searchController = TextEditingController();
 
 //   @override
 //   void initState() {
@@ -58,49 +61,218 @@
 //   Widget build(BuildContext context) {
 //     return Scaffold(
 //       appBar: AppBar(
-//         title: Text("Elec"),
+//         title: Text(
+//           "Electricians near you",
+//           style: TextStyle(
+//             color: Colors.black,
+//             fontFamily: 'uber', // Set your custom font family
+//           ),
+//           textAlign: TextAlign.center,
+//         ),
+//         backgroundColor: Colors.white,
+//         centerTitle: true, // Center the title
+//         leading: IconButton(
+//           icon: Icon(Icons.arrow_back, color: Colors.black),
+//           onPressed: () {
+//             Navigator.push(
+//               context,
+//               MaterialPageRoute(builder: (context) => GetLatLongScreen()),
+//             );
+//           },
+//         ),
+//         iconTheme: IconThemeData(
+//             color: Colors.black), // Change the app bar icon color to black
 //       ),
-//       body: error.isNotEmpty
-//           ? Center(child: Text('Error: $error'))
-//           : _userStream == null
-//               ? Center(child: CircularProgressIndicator())
-//               : StreamBuilder(
-//                   stream: _userStream,
-//                   builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-//                     if (snapshot.hasError) {
-//                       return Center(child: Text('Connection error'));
-//                     }
-//                     if (snapshot.connectionState == ConnectionState.waiting) {
-//                       return Center(child: CircularProgressIndicator());
-//                     }
-//                     if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-//                       return Center(child: Text('No data available'));
-//                     }
+//       body: Container(
+//         color: Colors.white,
+//         child: error.isNotEmpty
+//             ? Center(child: Text('Error: $error'))
+//             : Column(
+//                 children: [
+//                   Padding(
+//                     padding: const EdgeInsets.all(8.0),
+//                     child: Row(
+//                       children: [
+//                         Expanded(
+//                           child: Container(
+//                             height: 40,
+//                             padding: EdgeInsets.all(8),
+//                             decoration: BoxDecoration(
+//                               color: Color.fromARGB(255, 235, 233, 233),
+//                               borderRadius: BorderRadius.circular(19.94),
+//                             ),
+//                             child: TextField(
+//                               controller: searchController,
+//                               decoration: InputDecoration(
+//                                 hintText: 'Search',
+//                                 hintStyle: TextStyle(fontSize: 16),
+//                                 contentPadding: EdgeInsets.all(6),
+//                                 border: InputBorder.none,
+//                                 prefixIcon: Icon(Icons.search),
+//                                 filled: true,
+//                                 fillColor: Color.fromARGB(255, 235, 233, 233),
+//                               ),
+//                               onChanged: (value) {
+//                                 // Handle search functionality here
+//                                 // Update the _userStream based on search query if needed
+//                               },
+//                             ),
+//                           ),
+//                         ),
+//                         IconButton(
+//                           icon: Icon(Icons.filter_list, color: Colors.black),
+//                           onPressed: () {
+//                             // Handle filter button press
+//                           },
+//                         ),
+//                       ],
+//                     ),
+//                   ),
+//                   SizedBox(
+//                     height: 50,
+//                     child: ListView(
+//                       scrollDirection: Axis.horizontal,
+//                       children: [
+//                         Padding(
+//                           padding: const EdgeInsets.only(right: 8.0),
+//                           child: Chip(
+//                             label: Text('Sort'),
+//                             backgroundColor: Colors.grey[300],
+//                             shape: StadiumBorder(
+//                               side: BorderSide(
+//                                   color: Colors.grey[
+//                                       300]!), // Same as background color to remove border
+//                             ),
+//                           ),
+//                         ),
+//                         Padding(
+//                           padding: const EdgeInsets.only(right: 8.0),
+//                           child: Chip(
+//                             label: Text('Nearest'),
+//                             backgroundColor: Colors.grey[300],
+//                             shape: StadiumBorder(
+//                               side: BorderSide(
+//                                   color: Colors.grey[
+//                                       300]!), // Same as background color to remove border
+//                             ),
+//                           ),
+//                         ),
+//                         Padding(
+//                           padding: const EdgeInsets.only(right: 8.0),
+//                           child: Chip(
+//                             label: Text('Offers'),
+//                             backgroundColor: Colors.grey[300],
+//                             shape: StadiumBorder(
+//                               side: BorderSide(
+//                                   color: Colors.grey[
+//                                       300]!), // Same as background color to remove border
+//                             ),
+//                           ),
+//                         ),
+//                         Padding(
+//                           padding: const EdgeInsets.only(right: 8.0),
+//                           child: Chip(
+//                             label: Text('Rating 4+'),
+//                             backgroundColor: Colors.grey[300],
+//                             shape: StadiumBorder(
+//                               side: BorderSide(
+//                                   color: Colors.grey[
+//                                       300]!), // Same as background color to remove border
+//                             ),
+//                           ),
+//                         ),
+//                         Padding(
+//                           padding: const EdgeInsets.only(right: 8.0),
+//                           child: Chip(
+//                             label: Text('Previously'),
+//                             backgroundColor: Colors.grey[300],
+//                             shape: StadiumBorder(
+//                               side: BorderSide(
+//                                   color: Colors.grey[
+//                                       300]!), // Same as background color to remove border
+//                             ),
+//                           ),
+//                         ),
+//                       ],
+//                     ),
+//                   ),
+//                   SizedBox(
+//                     height: 10,
+//                   ),
+//                   Expanded(
+//                     child: _userStream == null
+//                         ? Center(child: CircularProgressIndicator())
+//                         : StreamBuilder(
+//                             stream: _userStream,
+//                             builder: (context,
+//                                 AsyncSnapshot<QuerySnapshot> snapshot) {
+//                               if (snapshot.hasError) {
+//                                 return Center(child: Text('Connection error'));
+//                               }
+//                               if (snapshot.connectionState ==
+//                                   ConnectionState.waiting) {
+//                                 return Center(
+//                                     child: CircularProgressIndicator());
+//                               }
+//                               if (!snapshot.hasData ||
+//                                   snapshot.data!.docs.isEmpty) {
+//                                 return Center(child: Text('No data available'));
+//                               }
 
-//                     print(
-//                         "Documents: ${snapshot.data!.docs}"); // Debugging line
+//                               print(
+//                                   "Documents: ${snapshot.data!.docs}"); // Debugging line
 
-//                     var docs = snapshot.data!.docs;
-//                     return ListView.builder(
-//                       itemCount: docs.length,
-//                       itemBuilder: (context, index) {
-//                         return ListTile(
-//                           leading: Icon(Icons.person),
-//                           title: Text(docs[index]['name']),
-//                           subtitle: Text('${docs[index]['rating']}'),
-//                         );
-//                       },
-//                     );
-//                   },
-//                 ),
+//                               var docs = snapshot.data!.docs;
+//                               return ListView.builder(
+//                                 itemCount: docs.length,
+//                                 itemBuilder: (context, index) {
+//                                   var doc = docs[index];
+//                                   return Container(
+//                                     margin: EdgeInsets.symmetric(
+//                                         horizontal: 8, vertical: 4),
+//                                     padding: EdgeInsets.all(8),
+//                                     decoration: BoxDecoration(
+//                                       color: Color.fromARGB(255, 230, 228, 228),
+//                                       borderRadius: BorderRadius.circular(24),
+//                                     ),
+//                                     child: ListTile(
+//                                       leading: CircleAvatar(
+//                                         backgroundColor: Colors.black,
+//                                         child: Icon(Icons.person,
+//                                             color: Colors.white),
+//                                       ),
+//                                       title: Text(doc['name']),
+//                                       subtitle: Row(
+//                                         children: [
+//                                           Icon(Icons.star,
+//                                               color: Colors.amber, size: 16),
+//                                           SizedBox(width: 4),
+//                                           Text('${doc['rating']}'),
+//                                           // SizedBox(width: 8),
+//                                           // Text('${doc['distance']} kms away'), // Uncomment this part when distance data is available
+//                                         ],
+//                                       ),
+//                                       trailing: Icon(Icons.chat_bubble_outline),
+//                                     ),
+//                                   );
+//                                 },
+//                               );
+//                             },
+//                           ),
+//                   ),
+//                 ],
+//               ),
+//       ),
 //     );
 //   }
 // }
-
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:servease/consts/consts.dart';
+import 'package:servease/views/home/get_lat_long.dart';
 import 'package:servease/widgets_common/location.dart'; // Ensure the path is correct
+import 'package:servease/widgets_common/navigationbar.dart'; // Import the custom bottom navigation bar
 
 class Elec extends StatefulWidget {
   const Elec({Key? key}) : super(key: key);
@@ -114,6 +286,8 @@ class _ElecState extends State<Elec> {
   Stream<QuerySnapshot>? _userStream;
   final LocationService locationService = LocationService();
   String error = "";
+  TextEditingController searchController = TextEditingController();
+  int _selectedIndex = 1; // Default to home screen
 
   @override
   void initState() {
@@ -153,142 +327,222 @@ class _ElecState extends State<Elec> {
     });
   }
 
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white, // Set background color to white
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.location_on,
-                color: const Color.fromARGB(
-                    255, 255, 0, 0)), // Set icon color to red
-            SizedBox(width: 8),
-            Text(
-              error.isEmpty ? locality : "Error",
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                  fontSize: 18, color: Colors.black, fontFamily: 'uber'),
-            ),
-          ],
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.notifications,
-                color: Colors.black), // Set icon color to black
-            onPressed: () {
-              // Handle notification bell press
-            },
+        title: Text(
+          "Electricians near you",
+          style: TextStyle(
+            color: Colors.black,
+            fontFamily: 'uber', // Set your custom font family
           ),
-        ],
+          textAlign: TextAlign.center,
+        ),
+        backgroundColor: Colors.white,
+        centerTitle: true, // Center the title
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => GetLatLongScreen()),
+            );
+          },
+        ),
+        iconTheme: IconThemeData(
+            color: Colors.black), // Change the app bar icon color to black
       ),
-      body: error.isNotEmpty
-          ? Center(child: Text('Error: $error'))
-          : _userStream == null
-              ? Center(child: CircularProgressIndicator())
-              : Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        children: [
-                          Expanded(
+      body: Container(
+        color: Colors.white,
+        child: error.isNotEmpty
+            ? Center(child: Text('Error: $error'))
+            : Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            height: 40,
+                            padding: EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                              color: Color.fromARGB(255, 235, 233, 233),
+                              borderRadius: BorderRadius.circular(19.94),
+                            ),
                             child: TextField(
+                              controller: searchController,
                               decoration: InputDecoration(
                                 hintText: 'Search',
                                 hintStyle: TextStyle(fontSize: 16),
                                 contentPadding: EdgeInsets.all(6),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(30),
-                                ),
+                                border: InputBorder.none,
                                 prefixIcon: Icon(Icons.search),
                                 filled: true,
-                                fillColor: Color(0xFFEEEEEE),
+                                fillColor: Color.fromARGB(255, 235, 233, 233),
                               ),
                               onChanged: (value) {
                                 // Handle search functionality here
+                                // Update the _userStream based on search query if needed
                               },
                             ),
                           ),
-                          SizedBox(width: 10),
-                          IconButton(
-                            icon: Icon(Icons.sort, color: Colors.black),
-                            onPressed: () {
-                              // Handle sort functionality here
-                            },
+                        ),
+                        IconButton(
+                          icon: Icon(Icons.filter_list, color: Colors.black),
+                          onPressed: () {
+                            // Handle filter button press
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 50,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(right: 8.0),
+                          child: Chip(
+                            label: Text('Sort'),
+                            backgroundColor: Colors.grey[300],
+                            shape: StadiumBorder(
+                              side: BorderSide(
+                                  color: Colors.grey[
+                                      300]!), // Same as background color to remove border
+                            ),
                           ),
-                        ],
-                      ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 8.0),
+                          child: Chip(
+                            label: Text('Nearest'),
+                            backgroundColor: Colors.grey[300],
+                            shape: StadiumBorder(
+                              side: BorderSide(
+                                  color: Colors.grey[
+                                      300]!), // Same as background color to remove border
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 8.0),
+                          child: Chip(
+                            label: Text('Offers'),
+                            backgroundColor: Colors.grey[300],
+                            shape: StadiumBorder(
+                              side: BorderSide(
+                                  color: Colors.grey[
+                                      300]!), // Same as background color to remove border
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 8.0),
+                          child: Chip(
+                            label: Text('Rating 4+'),
+                            backgroundColor: Colors.grey[300],
+                            shape: StadiumBorder(
+                              side: BorderSide(
+                                  color: Colors.grey[
+                                      300]!), // Same as background color to remove border
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 8.0),
+                          child: Chip(
+                            label: Text('Previously'),
+                            backgroundColor: Colors.grey[300],
+                            shape: StadiumBorder(
+                              side: BorderSide(
+                                  color: Colors.grey[
+                                      300]!), // Same as background color to remove border
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          FilterChipWidget(label: 'Nearest'),
-                          FilterChipWidget(label: 'Offers'),
-                          FilterChipWidget(label: 'Rating 4+'),
-                          FilterChipWidget(label: 'Previously'),
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      child: StreamBuilder(
-                        stream: _userStream,
-                        builder:
-                            (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-                          if (snapshot.hasError) {
-                            return Center(child: Text('Connection error'));
-                          }
-                          if (snapshot.connectionState ==
-                              ConnectionState.waiting) {
-                            return Center(child: CircularProgressIndicator());
-                          }
-                          if (!snapshot.hasData ||
-                              snapshot.data!.docs.isEmpty) {
-                            return Center(child: Text('No data available'));
-                          }
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Expanded(
+                    child: _userStream == null
+                        ? Center(child: CircularProgressIndicator())
+                        : StreamBuilder(
+                            stream: _userStream,
+                            builder: (context,
+                                AsyncSnapshot<QuerySnapshot> snapshot) {
+                              if (snapshot.hasError) {
+                                return Center(child: Text('Connection error'));
+                              }
+                              if (snapshot.connectionState ==
+                                  ConnectionState.waiting) {
+                                return Center(
+                                    child: CircularProgressIndicator());
+                              }
+                              if (!snapshot.hasData ||
+                                  snapshot.data!.docs.isEmpty) {
+                                return Center(child: Text('No data available'));
+                              }
 
-                          var docs = snapshot.data!.docs;
-                          return ListView.builder(
-                            itemCount: docs.length,
-                            itemBuilder: (context, index) {
-                              var doc = docs[index];
-                              return ListTile(
-                                leading: CircleAvatar(
-                                  child: Icon(Icons.person),
-                                ),
-                                title: Text(doc['name']),
-                                subtitle: Text(
-                                    '${doc['rating']} \u2605'), // Removed distance
-                                trailing: Icon(Icons.chat),
+                              print(
+                                  "Documents: ${snapshot.data!.docs}"); // Debugging line
+
+                              var docs = snapshot.data!.docs;
+                              return ListView.builder(
+                                itemCount: docs.length,
+                                itemBuilder: (context, index) {
+                                  var doc = docs[index];
+                                  return Container(
+                                    margin: EdgeInsets.symmetric(
+                                        horizontal: 8, vertical: 4),
+                                    padding: EdgeInsets.all(8),
+                                    decoration: BoxDecoration(
+                                      color: Color.fromARGB(255, 230, 228, 228),
+                                      borderRadius: BorderRadius.circular(24),
+                                    ),
+                                    child: ListTile(
+                                      leading: CircleAvatar(
+                                        backgroundColor: Colors.black,
+                                        child: Icon(Icons.person,
+                                            color: Colors.white),
+                                      ),
+                                      title: Text(doc['name']),
+                                      subtitle: Row(
+                                        children: [
+                                          Icon(Icons.star,
+                                              color: Colors.amber, size: 16),
+                                          SizedBox(width: 4),
+                                          Text('${doc['rating']}'),
+                                          // SizedBox(width: 8),
+                                          // Text('${doc['distance']} kms away'), // Uncomment this part when distance data is available
+                                        ],
+                                      ),
+                                      trailing: Icon(Icons.chat_bubble_outline),
+                                    ),
+                                  );
+                                },
                               );
                             },
-                          );
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-    );
-  }
-}
-
-class FilterChipWidget extends StatelessWidget {
-  final String label;
-
-  const FilterChipWidget({required this.label});
-
-  @override
-  Widget build(BuildContext context) {
-    return FilterChip(
-      label: Text(label),
-      onSelected: (bool value) {
-        // Add filter functionality here
-      },
+                          ),
+                  ),
+                ],
+              ),
+      ),
+      bottomNavigationBar: CustomBottomNavigationBar(
+        selectedIndex: _selectedIndex,
+        onItemTapped: _onItemTapped,
+      ),
     );
   }
 }

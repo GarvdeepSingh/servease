@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:servease/widgets_common/cat_mod.dart'; // Assuming you have this import for category data
-import 'package:servease/widgets_common/profile.dart'; // Import the profile screen
-import 'package:servease/widgets_common/location.dart'; // Import the location service
-import 'package:servease/category/elec.dart'; // Import the Elec page
+import 'package:servease/widgets_common/cat_mod.dart';
+import 'package:servease/widgets_common/profile.dart';
+import 'package:servease/widgets_common/location.dart';
+import 'package:servease/category/elec.dart';
 
 class GetLatLongScreen extends StatefulWidget {
   const GetLatLongScreen({Key? key}) : super(key: key);
@@ -63,18 +63,16 @@ class _GetLatLongScreenState extends State<GetLatLongScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white, // Set background color to white
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
             SliverAppBar(
-              backgroundColor: Colors.white, // Set AppBar background to white
+              backgroundColor: Colors.white,
               floating: true,
               pinned: true,
               leading: IconButton(
-                icon: Icon(Icons.menu,
-                    color: Color.fromARGB(
-                        255, 0, 0, 0)), // Set icon color to black
+                icon: Icon(Icons.menu, color: Color.fromARGB(255, 0, 0, 0)),
                 onPressed: () {
                   // Handle menu button press
                 },
@@ -83,8 +81,7 @@ class _GetLatLongScreenState extends State<GetLatLongScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(Icons.location_on,
-                      color: const Color.fromARGB(
-                          255, 255, 0, 0)), // Set icon color to black
+                      color: const Color.fromARGB(255, 255, 0, 0)),
                   SizedBox(width: 8),
                   Text(
                     error.isEmpty ? address : "Error",
@@ -96,8 +93,7 @@ class _GetLatLongScreenState extends State<GetLatLongScreen> {
               ),
               actions: [
                 IconButton(
-                  icon: Icon(Icons.notifications,
-                      color: Colors.black), // Set icon color to black
+                  icon: Icon(Icons.notifications, color: Colors.black),
                   onPressed: () {
                     // Handle notification bell press
                   },
@@ -106,7 +102,7 @@ class _GetLatLongScreenState extends State<GetLatLongScreen> {
               bottom: PreferredSize(
                 preferredSize: Size.fromHeight(kToolbarHeight + 2),
                 child: Container(
-                  color: Colors.white, // Set the background color to white
+                  color: Colors.white,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 2),
                     child: Row(
@@ -136,8 +132,7 @@ class _GetLatLongScreenState extends State<GetLatLongScreen> {
                           ),
                         ),
                         IconButton(
-                          icon: Icon(Icons.filter_list,
-                              color: Colors.black), // Filter button icon
+                          icon: Icon(Icons.filter_list, color: Colors.black),
                           onPressed: () {
                             // Handle filter button press
                           },
@@ -156,9 +151,7 @@ class _GetLatLongScreenState extends State<GetLatLongScreen> {
                     children: [
                       buildCategoriesScreen(),
                       buildHomeScreen(),
-                      ProfileScreen(
-                          nameController:
-                              nameController), // Use the ProfileScreen widget here
+                      ProfileScreen(nameController: nameController),
                     ],
                   ),
                 ],
@@ -172,35 +165,23 @@ class _GetLatLongScreenState extends State<GetLatLongScreen> {
         onTap: _onItemTapped,
         items: [
           BottomNavigationBarItem(
-            icon: Padding(
-              padding: const EdgeInsets.all(.0), // Reduced padding
-              child: Image.asset(
-                'assets/images/Scroll.png',
-                height: 65,
-                width: 40,
-              ),
+            icon: Container(
+              padding: EdgeInsets.only(top: 2),
+              child: Image.asset('assets/images/Scroll.png', height: 35),
             ),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Padding(
-              padding: const EdgeInsets.all(.0), // Reduced padding
-              child: Image.asset(
-                'assets/images/Home.png',
-                height: 54,
-                width: 39,
-              ),
+            icon: Container(
+              padding: EdgeInsets.only(top: 2),
+              child: Image.asset('assets/images/Home.png', height: 35),
             ),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Padding(
-              padding: const EdgeInsets.all(.0), // Reduced padding
-              child: Image.asset(
-                'assets/images/User.png',
-                height: 42,
-                width: 39,
-              ),
+            icon: Container(
+              padding: EdgeInsets.only(top: 2),
+              child: Image.asset('assets/images/User.png', height: 35),
             ),
             label: '',
           ),
