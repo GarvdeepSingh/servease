@@ -97,6 +97,9 @@ flutter:
     - assets/images/near_1.png
     - assets/images/near_2.png
     - assets/images/near_3.png
+    - assets/images/Home.png
+    - assets/images/Scroll.png
+    - assets/images/User.png
 
 
     

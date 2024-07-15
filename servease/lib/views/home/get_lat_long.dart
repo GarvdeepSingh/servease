@@ -64,97 +64,144 @@ class _GetLatLongScreenState extends State<GetLatLongScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white, // Set background color to white
-      appBar: AppBar(
-        backgroundColor: Colors.white, // Set AppBar background to white
-        leading: IconButton(
-          icon:
-              Icon(Icons.menu, color: Colors.black), // Set icon color to black
-          onPressed: () {
-            // Handle menu button press
-          },
-        ),
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.location_on,
-                color: Colors.black), // Set icon color to black
-            SizedBox(width: 8),
-            Text(
-              error.isEmpty ? address : "Error",
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                  fontSize: 18, color: Colors.black), // Set text color to black
-            ),
-          ],
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.notifications,
-                color: Colors.black), // Set icon color to black
-            onPressed: () {
-              // Handle notification bell press
-            },
-          ),
-        ],
-        bottom: PreferredSize(
-          preferredSize: Size.fromHeight(kToolbarHeight + 2),
-          child: Container(
-            color: Colors.white, // Set the background color to white
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 2),
-              child: Container(
-                height: 40,
-                width: 366.0,
-                padding: EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 238, 238, 238),
-                  borderRadius: BorderRadius.circular(19.94),
-                ),
-                child: TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Search',
-                    hintStyle: TextStyle(fontSize: 16),
-                    contentPadding: EdgeInsets.all(6),
-                    border: InputBorder.none,
-                    prefixIcon: Icon(Icons.search),
-                    filled: true,
-                    fillColor: Color(0xFFEEEEEE),
+      body: SafeArea(
+        child: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              backgroundColor: Colors.white, // Set AppBar background to white
+              floating: true,
+              pinned: true,
+              leading: IconButton(
+                icon: Icon(Icons.menu,
+                    color: Color.fromARGB(
+                        255, 0, 0, 0)), // Set icon color to black
+                onPressed: () {
+                  // Handle menu button press
+                },
+              ),
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.location_on,
+                      color: const Color.fromARGB(
+                          255, 255, 0, 0)), // Set icon color to black
+                  SizedBox(width: 8),
+                  Text(
+                    error.isEmpty ? address : "Error",
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        fontSize: 18, color: Colors.black, fontFamily: 'uber'),
                   ),
-                  onChanged: (value) {
-                    // Handle search functionality here
+                ],
+              ),
+              actions: [
+                IconButton(
+                  icon: Icon(Icons.notifications,
+                      color: Colors.black), // Set icon color to black
+                  onPressed: () {
+                    // Handle notification bell press
                   },
+                ),
+              ],
+              bottom: PreferredSize(
+                preferredSize: Size.fromHeight(kToolbarHeight + 2),
+                child: Container(
+                  color: Colors.white, // Set the background color to white
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 2),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            height: 40,
+                            padding: EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                              color: Color.fromARGB(255, 238, 238, 238),
+                              borderRadius: BorderRadius.circular(19.94),
+                            ),
+                            child: TextField(
+                              decoration: InputDecoration(
+                                hintText: 'Search',
+                                hintStyle: TextStyle(fontSize: 16),
+                                contentPadding: EdgeInsets.all(6),
+                                border: InputBorder.none,
+                                prefixIcon: Icon(Icons.search),
+                                filled: true,
+                                fillColor: Color(0xFFEEEEEE),
+                              ),
+                              onChanged: (value) {
+                                // Handle search functionality here
+                              },
+                            ),
+                          ),
+                        ),
+                        IconButton(
+                          icon: Icon(Icons.filter_list,
+                              color: Colors.black), // Filter button icon
+                          onPressed: () {
+                            // Handle filter button press
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ),
             ),
-          ),
-        ),
-      ),
-      body: SafeArea(
-        child: IndexedStack(
-          index: _selectedIndex,
-          children: [
-            buildCategoriesScreen(),
-            buildHomeScreen(),
-            ProfileScreen(
-                nameController:
-                    nameController), // Use the ProfileScreen widget here
+            SliverList(
+              delegate: SliverChildListDelegate(
+                [
+                  IndexedStack(
+                    index: _selectedIndex,
+                    children: [
+                      buildCategoriesScreen(),
+                      buildHomeScreen(),
+                      ProfileScreen(
+                          nameController:
+                              nameController), // Use the ProfileScreen widget here
+                    ],
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
-        items: const <BottomNavigationBarItem>[
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.list_alt),
+            icon: Padding(
+              padding: const EdgeInsets.all(.0), // Reduced padding
+              child: Image.asset(
+                'assets/images/Scroll.png',
+                height: 65,
+                width: 40,
+              ),
+            ),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Padding(
+              padding: const EdgeInsets.all(.0), // Reduced padding
+              child: Image.asset(
+                'assets/images/Home.png',
+                height: 54,
+                width: 39,
+              ),
+            ),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: Padding(
+              padding: const EdgeInsets.all(.0), // Reduced padding
+              child: Image.asset(
+                'assets/images/User.png',
+                height: 42,
+                width: 39,
+              ),
+            ),
             label: '',
           ),
         ],
