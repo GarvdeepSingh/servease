@@ -32,7 +32,7 @@ class LocationService {
     try {
       List<Placemark> placemarks = await placemarkFromCoordinates(lat, long);
       return placemarks.isNotEmpty
-          ? placemarks[0].subLocality ?? "Unknown"
+          ? placemarks[0].locality ?? "Unknown"
           : "Unknown";
     } catch (e) {
       return "Error: ${e.toString()}";
