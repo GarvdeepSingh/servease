@@ -132,7 +132,11 @@ class _GetLatLongScreenState extends State<GetLatLongScreen> {
                           ),
                         ),
                         IconButton(
-                          icon: Icon(Icons.filter_list, color: Colors.black),
+                          icon: Image.asset(
+                            'assets/images/Adjust.png',
+                            height: 24,
+                            width: 24,
+                          ),
                           onPressed: () {
                             // Handle filter button press
                           },
