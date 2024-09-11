@@ -40,7 +40,6 @@ dependencies:
   firebase_core: ^2.24.2
   firebase_auth: ^4.19.1
   google_sign_in: ^6.2.1
-<<<<<<< Updated upstream
   geolocator: ^11.0.0
   geocoding: ^3.0.0
   cloud_firestore: ^4.17.0
@@ -48,8 +47,6 @@ dependencies:
   googleapis_auth: ^1.6.0
   http: ^1.2.2
   firebase_messaging: ^14.8.2
-=======
->>>>>>> Stashed changes
 
 dev_dependencies:
   flutter_test:
