@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:servease/widgets_common/booking_details.dart';
 import 'package:servease/widgets_common/cat_mod.dart';
 import 'package:servease/widgets_common/profile.dart';
 import 'package:servease/widgets_common/location.dart';
@@ -95,7 +96,12 @@ class _GetLatLongScreenState extends State<GetLatLongScreen> {
                 IconButton(
                   icon: Icon(Icons.notifications, color: Colors.black),
                   onPressed: () {
-                    // Handle notification bell press
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => BookingDetailsScreen(),
+                      ),
+                    );
                   },
                 ),
               ],
