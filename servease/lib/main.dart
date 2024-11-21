@@ -18,8 +18,6 @@ import 'package:servease/views/skip/skip_screen.dart';
 import 'package:servease/views/skip/skip_screen1.dart';
 // ignore: unused_import
 import 'package:servease/views/splash_screen/splash_screen.dart';
-import 'package:servease/widgets_common/location.dart';
-import 'package:servease/widgets_common/skipscreen/location_animation.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
