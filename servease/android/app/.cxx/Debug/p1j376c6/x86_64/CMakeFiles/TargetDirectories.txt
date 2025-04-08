@@ -1,0 +1,2 @@
+/Users/garvdeepsingh/Documents/servease/servease/android/app/.cxx/Debug/p1j376c6/x86_64/CMakeFiles/edit_cache.dir
+/Users/garvdeepsingh/Documents/servease/servease/android/app/.cxx/Debug/p1j376c6/x86_64/CMakeFiles/rebuild_cache.dir
