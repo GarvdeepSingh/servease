@@ -3,7 +3,7 @@ import 'package:servease/widgets_common/booking_details.dart';
 import 'package:servease/widgets_common/cat_mod.dart';
 import 'package:servease/widgets_common/profile.dart';
 import 'package:servease/widgets_common/location.dart';
-import 'package:servease/category/elec.dart';
+import 'package:servease/category/electrician/elec.dart';
 
 class GetLatLongScreen extends StatefulWidget {
   const GetLatLongScreen({Key? key}) : super(key: key);
@@ -52,7 +52,7 @@ class _GetLatLongScreenState extends State<GetLatLongScreen> {
     // Handle category tap
     print('Category tapped: $categoryName');
     if (categoryName == 'Electrician') {
-      Navigator.push(
+      Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => Elec()),
       );

@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 // ignore: unused_import
-import 'package:servease/category/elec.dart';
+import 'package:servease/category/electrician/elec.dart';
 // ignore: unused_import
 import 'package:servease/views/auth/auth_1.dart';
 // ignore: unused_import

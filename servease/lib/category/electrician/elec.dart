@@ -266,13 +266,13 @@
 //     );
 //   }
 // }
-import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:geolocator/geolocator.dart';
+import 'package:flutter/material.dart';
+import 'package:servease/category/electrician/elec_details.dart';
 import 'package:servease/consts/consts.dart';
 import 'package:servease/views/home/get_lat_long.dart';
-import 'package:servease/widgets_common/location.dart'; // Ensure the path is correct
-import 'package:servease/widgets_common/navigationbar.dart'; // Import the custom bottom navigation bar
+import 'package:servease/widgets_common/location.dart';
+import 'package:servease/widgets_common/navigationbar.dart';
 
 class Elec extends StatefulWidget {
   const Elec({Key? key}) : super(key: key);
@@ -338,7 +338,7 @@ class _ElecState extends State<Elec> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Electricians near you",
+          "Electricians Near You",
           style: TextStyle(
             color: Colors.black,
             fontFamily: 'uber', // Set your custom font family
@@ -350,10 +350,7 @@ class _ElecState extends State<Elec> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => GetLatLongScreen()),
-            );
+            Navigator.pop(context);
           },
         ),
         iconTheme: IconThemeData(
@@ -511,32 +508,46 @@ class _ElecState extends State<Elec> {
                                 itemCount: docs.length,
                                 itemBuilder: (context, index) {
                                   var doc = docs[index];
-                                  return Container(
-                                    margin: EdgeInsets.symmetric(
-                                        horizontal: 8, vertical: 4),
-                                    padding: EdgeInsets.all(8),
-                                    decoration: BoxDecoration(
-                                      color: Color.fromARGB(255, 230, 228, 228),
-                                      borderRadius: BorderRadius.circular(24),
-                                    ),
-                                    child: ListTile(
-                                      leading: CircleAvatar(
-                                        backgroundColor: Colors.black,
-                                        child: Icon(Icons.person,
-                                            color: Colors.white),
+                                  return InkWell(
+                                    onTap: () {
+                                      Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => ElecDetails(
+                                            providerName: doc['name'] ?? "John doe",
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    child: Container(
+                                      margin: EdgeInsets.symmetric(
+                                          horizontal: 8, vertical: 4),
+                                      padding: EdgeInsets.all(8),
+                                      decoration: BoxDecoration(
+                                        color:
+                                            Color.fromARGB(255, 230, 228, 228),
+                                        borderRadius: BorderRadius.circular(24),
                                       ),
-                                      title: Text(doc['name']),
-                                      subtitle: Row(
-                                        children: [
-                                          Icon(Icons.star,
-                                              color: Colors.amber, size: 16),
-                                          SizedBox(width: 4),
-                                          Text('${doc['rating']}'),
-                                          // SizedBox(width: 8),
-                                          // Text('${doc['distance']} kms away'), // Uncomment this part when distance data is available
-                                        ],
+                                      child: ListTile(
+                                        leading: CircleAvatar(
+                                          backgroundColor: Colors.black,
+                                          child: Icon(Icons.person,
+                                              color: Colors.white),
+                                        ),
+                                        title: Text(doc['name']),
+                                        subtitle: Row(
+                                          children: [
+                                            Icon(Icons.star,
+                                                color: Colors.amber, size: 16),
+                                            SizedBox(width: 4),
+                                            Text('${doc['rating']}'),
+                                            // SizedBox(width: 8),
+                                            // Text('${doc['distance']} kms away'), // Uncomment this part when distance data is available
+                                          ],
+                                        ),
+                                        trailing:
+                                            Icon(Icons.message),
                                       ),
-                                      trailing: Icon(Icons.chat_bubble_outline),
                                     ),
                                   );
                                 },

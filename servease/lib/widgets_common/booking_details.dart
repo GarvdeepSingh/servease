@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:servease/views/home/get_lat_long.dart';
+import 'package:servease/views/home/home.dart';
 import 'package:servease/widgets_common/progress_card.dart';
 
 class BookingDetailsScreen extends StatefulWidget {
@@ -17,7 +19,12 @@ class _BookingDetailsScreenState extends State<BookingDetailsScreen> {
         backgroundColor: Colors.white,
         centerTitle: true,
         leading: IconButton(
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => GetLatLongScreen(),
+            ),
+          ),
           icon: Icon(Icons.adaptive.arrow_back_outlined),
           color: Colors.black,
         ),
