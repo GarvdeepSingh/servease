@@ -268,7 +268,6 @@
 // }
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:servease/consts/consts.dart';
 import 'package:servease/views/home/get_lat_long.dart';
 import 'package:servease/widgets_common/location.dart'; // Ensure the path is correct

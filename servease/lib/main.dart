@@ -1,22 +1,16 @@
+// ignore_for_file: unused_import
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-// ignore: unused_import
 import 'package:servease/category/elec.dart';
-// ignore: unused_import
 import 'package:servease/views/auth/auth_1.dart';
-// ignore: unused_import
 import 'package:servease/views/auth/sign_in.dart';
-// ignore: unused_import
 import 'package:servease/views/home/get_lat_long.dart';
-// ignore: unused_import
 import 'package:servease/views/home/home.dart';
-// ignore: unused_import
 import 'package:servease/views/skip/skip_screen.dart';
-// ignore: unused_import
 import 'package:servease/views/skip/skip_screen1.dart';
-// ignore: unused_import
 import 'package:servease/views/splash_screen/splash_screen.dart';
 import 'package:servease/widgets_common/location.dart';
 import 'package:servease/widgets_common/skipscreen/location_animation.dart';

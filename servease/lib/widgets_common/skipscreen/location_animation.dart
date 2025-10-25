@@ -80,7 +80,7 @@ class _AnimatedHomePageState extends State<AnimatedHomePage> {
                   if (_greyScreenVisible)
                     Positioned.fill(
                       child: Container(
-                        color: Colors.grey, // Grey screen for splash screen
+                        color: Colors.grey,
                       ),
                     ),
                   Positioned.fill(
